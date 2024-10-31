@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCQ Quiz</title>
+  <style>
+    .question {
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+
+<h1>MCQ Quiz</h1>
+
+<div class="question">
+  <p>1. What does HTML stand for?</p>
+  <input type="radio" name="q1" value="correct"> Hyper Text Markup Language<br>
+  <input type="radio" name="q1" value="incorrect"> Home Tool Markup Language<br>
+  <input type="radio" name="q1" value="incorrect"> Hyperlinks and Text Markup Language<br>
+</div>
+
+<div class="question">
+  <p>2. Who is making the Web standards?</p>
+  <input type="radio" name="q2" value="incorrect"> Google<br>
+  <input type="radio" name="q2" value="correct"> The World Wide Web Consortium<br>
+  <input type="radio" name="q2" value="incorrect"> Microsoft<br>
+</div>
+
+<button onclick="checkAnswers()">Submit Answers</button>
+
+<p id="result"></p>
+
+<script>
+  function checkAnswers() {
+    let correct = 0;
+    let total = 2;
+    
+    const answers = document.querySelectorAll('input[type="radio"]:checked');
+    answers.forEach(answer => {
+      if (answer.value === "correct") correct++;
+    });
+    
+    document.getElementById("result").innerText = `You got ${correct} out of ${total} correct!`;
+  }
+</script>
+
+</body>
+</html>
