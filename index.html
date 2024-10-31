@@ -1,31 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MCQ Quiz</title>
-  <style>
-    .question {
-      margin: 20px 0;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQ Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .question {
+            margin: 20px 0;
+        }
+    </style>
 </head>
 <body>
 
-<h1>MCQ Quiz</h1>
+<h1>Word Embeddings MCQ Quiz</h1>
 
+<h2>Word Embeddings</h2>
 <div class="question">
-  <p>1. What does HTML stand for?</p>
-  <input type="radio" name="q1" value="correct"> Hyper Text Markup Language<br>
-  <input type="radio" name="q1" value="incorrect"> Home Tool Markup Language<br>
-  <input type="radio" name="q1" value="incorrect"> Hyperlinks and Text Markup Language<br>
+    <p>1. Which techniques create word embeddings?</p>
+    <input type="radio" name="q1" value="A"> A) Word2Vec and GloVe<br>
+    <input type="radio" name="q1" value="correct"> B) Word2Vec and FastText<br>
+    <input type="radio" name="q1" value="C"> C) TF-IDF and LDA<br>
+    <input type="radio" name="q1" value="D"> D) K-Means and PCA<br>
 </div>
 
 <div class="question">
-  <p>2. Who is making the Web standards?</p>
-  <input type="radio" name="q2" value="incorrect"> Google<br>
-  <input type="radio" name="q2" value="correct"> The World Wide Web Consortium<br>
-  <input type="radio" name="q2" value="incorrect"> Microsoft<br>
+    <p>2. What does cosine similarity measure?</p>
+    <input type="radio" name="q2" value="A"> A) The Euclidean distance between two points.<br>
+    <input type="radio" name="q2" value="correct"> B) The angle between two vectors.<br>
+    <input type="radio" name="q2" value="C"> C) The average of two vectors.<br>
+    <input type="radio" name="q2" value="D"> D) The length of the longest vector.<br>
 </div>
 
 <button onclick="checkAnswers()">Submit Answers</button>
@@ -33,17 +40,17 @@
 <p id="result"></p>
 
 <script>
-  function checkAnswers() {
-    let correct = 0;
-    let total = 2;
-    
-    const answers = document.querySelectorAll('input[type="radio"]:checked');
-    answers.forEach(answer => {
-      if (answer.value === "correct") correct++;
-    });
-    
-    document.getElementById("result").innerText = `You got ${correct} out of ${total} correct!`;
-  }
+    function checkAnswers() {
+        let correct = 0;
+        let total = 2; // Total number of questions
+
+        // Check answers for word embeddings
+        if (document.querySelector('input[name="q1"]:checked')?.value === "correct") correct++;
+        // Check answer for cosine similarity
+        if (document.querySelector('input[name="q2"]:checked')?.value === "correct") correct++;
+
+        document.getElementById("result").innerText = `You got ${correct} out of ${total} correct!`;
+    }
 </script>
 
 </body>
