@@ -268,6 +268,24 @@
     </p>
 
     <h3>1. Continuous Bag of Words (CBOW):</h3>
+    <p>
+        It works by predicting the target word using the surrounding context words
+For example, ”I am drinking ….”
+Here, CBOW works on figuring out the sentence's meaning and predicting the target word which in this example can be tea.
+
+    </p>
+    <p>
+        So, let's dive into the architecture behind CBOW
+    </p>
+    <ul>
+        <li><strong>Input Layer</strong>: In this layer, words are represented by one-hot encoded vectors, where each element in the vector corresponds to a specific word in the vocabulary. For example, if the vocabulary contains 30,000 words, the input layer will have 30,000 elements.</li>
+
+        <li><strong>Hidden Layer</strong>: In this layer, the word embeddings are formed by getting the average and converting it into a lower-dimensional dense vector. This dense layer has neurons that correspond to each word in the vocabulary. The total number of neurons in the hidden layer equals the number of words in the vocabulary.</li>
+
+        <li><strong>Output Layer</strong>: In this layer, the model uses a softmax function to predict the target word by figuring out which has the highest probability (most likely the middle word) from the vocabulary.</li>
+    </ul>
+    
+    
     <h3>2. Skip-Gram:</h3>
     <h3>3. Negative Sampling:</h3>
 
