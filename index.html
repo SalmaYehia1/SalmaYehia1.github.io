@@ -532,6 +532,25 @@
         <input type="radio" name="q2" value="D"> D) The length of the longest vector.<br>
     </div>
 
+
+    
+    <div class="question">
+        <p>3. How many parameters does SkipGram have? (d = embedding dimension, |V| = vocab size, m = context window)</p>
+        <input type="radio" name="q3" value="A"> A) d x |V|<br>
+        <input type="radio" name="q3" value="correct"> B) 2 x d x |V|<br>
+        <input type="radio" name="q3" value="C"> C) 2 x m x |V|<br>
+        <input type="radio" name="q3" value="D"> D) 2 x m x d x |V|.<br>
+    </div>
+
+
+    <div class="question">
+        <p>4. In SkipGram with negative sampling, how many parameters are updated for every context/target pair (t,c) where K = Number of negative samples</p>
+        <input type="radio" name="q4" value="A"> A)  K x d<br>
+        <input type="radio" name="q4" value="B"> B)  2 x K x d<br>
+        <input type="radio" name="q4" value="C"> C) (K+1) x d<br>
+        <input type="radio" name="q4" value="correct"> D) (K+2) x d<br>
+    </div>
+
     <button onclick="checkAnswers()">Submit Answers</button>
 
     <p id="result"></p>
@@ -539,12 +558,16 @@
     <script>
         function checkAnswers() {
             let correct = 0;
-            let total = 2; // Total number of questions
+            let total = 4; // Total number of questions
 
             // Check answers for word embeddings
             if (document.querySelector('input[name="q1"]:checked')?.value === "correct") correct++;
             // Check answer for cosine similarity
             if (document.querySelector('input[name="q2"]:checked')?.value === "correct") correct++;
+            // Check answer for SkipGram Parameter Count
+            if (document.querySelector('input[name="q3"]:checked')?.value === "correct") correct++;
+            // Check answer for number of parameters updated
+            if (document.querySelector('input[name="q4"]:checked')?.value === "correct") correct++;
 
             document.getElementById("result").innerText = `You got ${correct} out of ${total} correct!`;
         }
