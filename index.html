@@ -415,10 +415,9 @@
         vocabulary at every step.
 
     </p>
-    <h3>
-        Knowledge Check
-    </h3>
- 
+   <h3>
+    Knowledge Check
+</h3>
 
 <div class="question">
     <p>1. In SkipGram with negative sampling, how many parameters are updated for every context/target pair (t,c) where K = Number of negative samples?</p>
@@ -463,7 +462,7 @@
             document.getElementById("feedback-q4").style.color = "red";
         }
 
-        document.getElementById("explanation").innerText = "In the SkipGram model, the total number of parameters updated for each context/target pair is (K + 2) x d, where K is the number of negative samples and d is the embedding dimension.";
+        document.getElementById("explanation").innerText = "Each context/target pair in SkipGram updates (K + 2) x d parameters, where K is the number of negative samples. This reflects the model's complexity in learning word associations.";
         document.getElementById("explanation").style.display = "block";
     }
 
@@ -507,7 +506,6 @@
         background-color: #45a049; 
     }
 </style>
-
 
 
     <h2>
