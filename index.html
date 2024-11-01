@@ -415,73 +415,37 @@
         vocabulary at every step.
 
     </p>
-      <style>
-        .question {
-            margin: 20px;
-            font-family: Arial, sans-serif;
-        }
-
-        input[type="radio"] {
-            margin: 10px 0;
-        }
-
-        button {
-            padding: 10px 15px;
-            background-color: #4CAF50; /* Green background */
-            color: white; /* White text */
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        button:hover {
-            background-color: #45a049; /* Darker green on hover */
-        }
-
-        .feedback {
-            margin-top: 20px;
-            font-family: Arial, sans-serif;
-            color: #333;
-        }
-    </style>
-</head>
-<body>
-
     <div class="question">
-        <p>4. In SkipGram with negative sampling, how many parameters are updated for every context/target pair (t,c) where K = Number of negative samples?</p>
-        <input type="radio" name="q4" value="A"> A) K x d<br>
-        <input type="radio" name="q4" value="B"> B) 2 x K x d<br>
-        <input type="radio" name="q4" value="C"> C) (K + 1) x d<br>
-        <input type="radio" name="q4" value="correct"> D) (K + 2) x d<br>
-    </div>
+    <p>4. In SkipGram with negative sampling, how many parameters are updated for every context/target pair (t,c) where K = Number of negative samples?</p>
+    <input type="radio" name="q4" value="A"> A) K x d<br>
+    <input type="radio" name="q4" value="B"> B) 2 x K x d<br>
+    <input type="radio" name="q4" value="C"> C) (K+1) x d<br>
+    <input type="radio" name="q4" value="correct"> D) (K+2) x d<br>
+    <p class="feedback" id="feedback-q4"></p>
+</div>
 
-    <button onclick="checkAnswers()">Submit</button>
-    
-    <div class="feedback" id="feedback"></div>
+<button onclick="checkSkipGramAnswer()">Submit Answer</button>
 
-    <script>
-        function checkAnswers() {
-            const correctAnswer = "correct"; // Adjusted to match the value attribute
-            const selectedOption = document.querySelector('input[name="q4"]:checked');
+<p id="result"></p>
 
-            const feedbackDiv = document.getElementById("feedback");
-            if (selectedOption) {
-                const selectedValue = selectedOption.value;
+<script>
+    function checkSkipGramAnswer() {
+        const correctAnswer = "correct"; // Value for the correct answer
+        const userAnswer = document.querySelector('input[name="q4"]:checked')?.value;
 
-                if (selectedValue === correctAnswer) {
-                    feedbackDiv.innerHTML = "Correct! The correct answer is (K + 2) x d because, in SkipGram with negative sampling, for each context/target pair, we update the parameters for the target word, K negative samples, and the bias term for both the target and negative samples, resulting in a total of (K + 2) x d parameters.";
-                    feedbackDiv.style.color = "green";
-                } else {
-                    feedbackDiv.innerHTML = "Incorrect. Please try again!";
-                    feedbackDiv.style.color = "red";
-                }
-            } else {
-                feedbackDiv.innerHTML = "Please select an answer before submitting.";
-                feedbackDiv.style.color = "orange";
-            }
+        // Check if the answer is correct
+        if (userAnswer === correctAnswer) {
+            document.getElementById("feedback-q4").innerText = "Correct! In SkipGram with negative sampling, (K + 2) x d parameters are updated for each context/target pair.";
+            document.getElementById("feedback-q4").style.color = "green";
+            document.getElementById("result").innerText = "You got it right!";
+        } else {
+            document.getElementById("feedback-q4").innerText = "Incorrect. The correct answer is D) (K + 2) x d.";
+            document.getElementById("feedback-q4").style.color = "red";
+            document.getElementById("result").innerText = "Try again!";
         }
-    </script>
+    }
+</script>
+
     <h2>
         GloVe (Global Vectors for Word Representation)
     </h2>
