@@ -433,7 +433,6 @@
 <!-- Feedback and Explanation for Question 1 -->
 <div id="explanation-container" style="display:none; margin-top: 20px;">
     <span id="feedback-q4"></span>
-    <span id="explanation" style="margin-left: 10px;"></span>
 </div>
 
 <!-- Second Question -->
@@ -451,7 +450,6 @@
 <!-- Feedback and Explanation for Question 2 -->
 <div id="explanation-container-params" style="display:none; margin-top: 20px;">
     <span id="feedback-q3"></span>
-    <span id="explanation-params" style="margin-left: 10px;"></span>
 </div>
 
 <script>
@@ -460,13 +458,12 @@
         const userAnswer = document.querySelector('input[name="q4"]:checked')?.value;
 
         document.getElementById("feedback-q4").innerText = '';
-        document.getElementById("explanation").innerText = '';
         document.getElementById("explanation-container").style.display = "none";
 
         if (userAnswer === correctAnswer) {
-            document.getElementById("feedback-q4").innerText = "Correct!";
+            const explanationText = " Each context/target pair in SkipGram updates (K + 2) x d parameters, reflecting the model's complexity in learning word associations.";
+            document.getElementById("feedback-q4").innerHTML = "Correct! " + explanationText;
             document.getElementById("feedback-q4").style.color = "green";
-            document.getElementById("explanation").innerText = "Each context/target pair in SkipGram updates (K + 2) x d parameters, reflecting the model's complexity in learning word associations.";
             document.getElementById("explanation-container").style.display = "block";
         } else {
             document.getElementById("feedback-q4").innerText = "Incorrect. Try again!";
@@ -479,13 +476,12 @@
         const userAnswer = document.querySelector('input[name="q3"]:checked')?.value;
 
         document.getElementById("feedback-q3").innerText = '';
-        document.getElementById("explanation-params").innerText = '';
         document.getElementById("explanation-container-params").style.display = "none";
 
         if (userAnswer === correctAnswer) {
-            document.getElementById("feedback-q3").innerText = "Correct!";
+            const explanationText = " The SkipGram model has a total of 2 x d x |V| parameters, facilitating the prediction of context words given a target word.";
+            document.getElementById("feedback-q3").innerHTML = "Correct! " + explanationText;
             document.getElementById("feedback-q3").style.color = "green";
-            document.getElementById("explanation-params").innerText = "The SkipGram model has a total of 2 x d x |V| parameters, facilitating the prediction of context words given a target word.";
             document.getElementById("explanation-container-params").style.display = "block";
         } else {
             document.getElementById("feedback-q3").innerText = "Incorrect. Try again!";
@@ -493,6 +489,28 @@
         }
     }
 </script>
+
+<style>
+    #submit-button, #submit-button-2 {
+        background-color: #4CAF50; 
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    #submit-button:hover, #submit-button-2:hover {
+        background-color: #45a049; 
+    }
+</style>
+
 
 <style>
     #submit-button, #submit-button-2 {
