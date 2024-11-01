@@ -158,7 +158,7 @@
         Each position in the vector corresponds to a word in the vocabulary, in the order they were listed.
 
     </p>
-     <b>Disadvantages:</b>
+    <b>Disadvantages:</b>
     <ol>
         <li>
             Similar to one-hot encoding, the vector dimension is still too large = Vocabulary Size.<br><br>
@@ -185,7 +185,28 @@
         Another way to embed words is by using a co-occurrence matrix. By measuring how often each word occurs with
         other words we can find a suitable representation of those words. In the next figure, for example, we can see
         that the word “digital” occurs with “computer” 1670 times, which is way more than “cherry” and “computer” for
+        example. We can use this technique to embed the words by the counts in their corresponding rows.
     </p>
+    <figure>
+        <img src="Figures/Co_Occ1.jpg"
+            alt="Co-occurrence Counts" width="700">
+        <figcaption>Source: <a href="https://web.stanford.edu/~jurafsky/slp3/6.pdf">Vector Semantics and Embeddings (Stanford University) 
+                Words Model in NLP</a></figcaption>
+    </figure>
+    <br><br>
+    <p>
+        Additionally, we can normalize the counts by dividing them by the total count. For example, in the cherry row,
+        we can divide all counts by 486 to obtain probabilities.
+    </p>
+    <figure>
+        <img src="Figures/Co_Occ2.jpg"
+            alt="Co-occurrence Counts" width="700">
+        <figcaption>Source: <a href="https://web.stanford.edu/~jurafsky/slp3/6.pdf">Vector Semantics and Embeddings (Stanford University) 
+                Words Model in NLP</a></figcaption>
+    </figure>
+
+
+    
 
     <h3>
         Term Frequency-Inverse Document Frequency (TF-IDF)
@@ -270,52 +291,77 @@
     <h3>1. Continuous Bag of Words (CBOW):</h3>
     <p>
         It works by predicting the target word using the surrounding context words
-For example, ”I am drinking ….”
-Here, CBOW works on figuring out the sentence's meaning and predicting the target word which in this example can be tea.
+        For example, ”I am drinking ….”
+        Here, CBOW works on figuring out the sentence's meaning and predicting the target word which in this example can
+        be tea.
 
     </p>
     <p>
         So, let's dive into the architecture behind CBOW
     </p>
     <ul>
-        <li><strong>Input Layer</strong>: In this layer, words are represented by one-hot encoded vectors, where each element in the vector corresponds to a specific word in the vocabulary. For example, if the vocabulary contains 30,000 words, the input layer will have 30,000 elements.</li>
-<br>
-        
-        <li><strong>Hidden Layer</strong>: In this layer, the word embeddings are formed by getting the average and converting it into a lower-dimensional dense vector. This dense layer has neurons that correspond to each word in the vocabulary. The total number of neurons in the hidden layer equals the number of words in the vocabulary.</li>
-<br><br>
-        <li><strong>Output Layer</strong>: In this layer, the model uses a softmax function to predict the target word by figuring out which has the highest probability (most likely the middle word) from the vocabulary.</li>
-   <br>
+        <li><strong>Input Layer</strong>: In this layer, words are represented by one-hot encoded vectors, where each
+            element in the vector corresponds to a specific word in the vocabulary. For example, if the vocabulary
+            contains 30,000 words, the input layer will have 30,000 elements.</li>
+        <br>
+
+        <li><strong>Hidden Layer</strong>: In this layer, the word embeddings are formed by getting the average and
+            converting it into a lower-dimensional dense vector. This dense layer has neurons that correspond to each
+            word in the vocabulary. The total number of neurons in the hidden layer equals the number of words in the
+            vocabulary.</li>
+        <br><br>
+        <li><strong>Output Layer</strong>: In this layer, the model uses a softmax function to predict the target word
+            by figuring out which has the highest probability (most likely the middle word) from the vocabulary.</li>
+        <br>
     </ul>
     <p>
         Previously we talked about Bag Of Words (BOW) so, let's know the main differences between CBOW and BOW
-Each of the BoW and CBOW models serves distinct purposes in natural language processing. BoW represents a document as a collection of words, providing an effective representation by ignoring their order and grammar, and focusing on the frequency of each word. This results in high-dimensional and sparse feature vectors. In contrast, CBOW is a neural network model that predicts a target word based on its surrounding context words, capturing semantic relationships by considering the context in which words appear and identifying the relationships between them.
+        Each of the BoW and CBOW models serves distinct purposes in natural language processing. BoW represents a
+        document as a collection of words, providing an effective representation by ignoring their order and grammar,
+        and focusing on the frequency of each word. This results in high-dimensional and sparse feature vectors. In
+        contrast, CBOW is a neural network model that predicts a target word based on its surrounding context words,
+        capturing semantic relationships by considering the context in which words appear and identifying the
+        relationships between them.
 
     </p>
-    
-    
+
+
     <h3>2. Skip-Gram:</h3>
     <p>
-        The Skip-gram model is a neural network-based approach for learning word embeddings from a large corpus of text. The main goal of the Skip-gram model is to predict the context words surrounding a target word. 
-<br></br>
-        
-For example:
-"I am drinking coffee in the morning," the target word could be "drinking." 
-So, Skip-Gram will predict "I," "am," "coffee," and "in." 
-<br></br>
-So, let's dive into the architecture behind Skip-Gram. Firstly, Skip-Gram maintains two vector embeddings, each of the same dimension for each word. If the embedding dimension we’re using is equal to 100, then for each word, we have a 100-dimensional vector that is used when the word is a context word and another 100-dimensional vector that is used when the word is a target word. 
-<br></br>
-You might be wondering why we use two embeddings per word. Well, here's the reasoning:
+        The Skip-gram model is a neural network-based approach for learning word embeddings from a large corpus of text.
+        The main goal of the Skip-gram model is to predict the context words surrounding a target word.
+        <br></br>
+
+        For example:
+        "I am drinking coffee in the morning," the target word could be "drinking."
+        So, Skip-Gram will predict "I," "am," "coffee," and "in."
+        <br></br>
+        So, let's dive into the architecture behind Skip-Gram. Firstly, Skip-Gram maintains two vector embeddings, each
+        of the same dimension for each word. If the embedding dimension we’re using is equal to 100, then for each word,
+        we have a 100-dimensional vector that is used when the word is a context word and another 100-dimensional vector
+        that is used when the word is a target word.
+        <br></br>
+        You might be wondering why we use two embeddings per word. Well, here's the reasoning:
 
     </p>
     <ol>
-        <li><strong>Firstly</strong>: In skip-gram, each word can appear as a central (target) word or as a neighboring (context) word around other targets. We want the model to learn not only how the target word itself behaves but also how it influences the words around it. Using separate embeddings for the target and context enables the model to capture these nuanced relationships better.</li>
+        <li><strong>Firstly</strong>: In skip-gram, each word can appear as a central (target) word or as a neighboring
+            (context) word around other targets. We want the model to learn not only how the target word itself behaves
+            but also how it influences the words around it. Using separate embeddings for the target and context enables
+            the model to capture these nuanced relationships better.</li>
 
-        <li><strong>Additionally</strong>: Language often has asymmetrical relationships, where the influence of one word on another is not identical when reversed (e.g., "doctor" and "hospital" have different roles when "doctor" is the target vs. "hospital"). By using separate embeddings, skip-gram can learn more refined relationships and better capture the directional context.</li>
+        <li><strong>Additionally</strong>: Language often has asymmetrical relationships, where the influence of one
+            word on another is not identical when reversed (e.g., "doctor" and "hospital" have different roles when
+            "doctor" is the target vs. "hospital"). By using separate embeddings, skip-gram can learn more refined
+            relationships and better capture the directional context.</li>
     </ol>
     <p><strong><u>Step 1 (Build our Dataset):</u></strong></p>
-    <p>To build our dataset from a set of English sentences, we first choose a context window length = 4 for example. Then for every sentence, for every word, treat it as a target word and treat the 4 words before and after it as context words. Add each one of those context/target pairs independently into our dataset. The result of this for a sentence, such as “This is an example sentence in our corpus” will be:</p>
+    <p>To build our dataset from a set of English sentences, we first choose a context window length = 4 for example.
+        Then for every sentence, for every word, treat it as a target word and treat the 4 words before and after it as
+        context words. Add each one of those context/target pairs independently into our dataset. The result of this for
+        a sentence, such as “This is an example sentence in our corpus” will be:</p>
     </p>
-      <ul>
+    <ul>
         <li>(This, is) (This, an) (This, example) (This, sentence)</li>
         <li>(is, This) (is, an) (is, example) (is, sentence)</li>
         <li>(an, This) (an, is) (an, example) (an, sentence) (an, in) (an, our)</li>
@@ -326,61 +372,112 @@ You might be wondering why we use two embeddings per word. Well, here's the reas
     <p>Randomly choose a target/context pair from our dataset.</p>
 
     <p><strong><u>Step 3 (Embed the pair):</u></strong></p>
-    <p>Get the word embedding from our target embedding matrix for the target word, and the word from our context matrix for the context word. Notice that we have two embedding matrices in this case; one that is used when the word is a target word and another that is used when it's a context word.</p>
-    <p>Notice that we initialize the embedding matrices randomly, so initially those embeddings won’t mean much. However, the word2vec algorithm, given some data, will work on making the embeddings for the words that occur together in the same sentence become more similar.</p>
+    <p>Get the word embedding from our target embedding matrix for the target word, and the word from our context matrix
+        for the context word. Notice that we have two embedding matrices in this case; one that is used when the word is
+        a target word and another that is used when it's a context word.</p>
+    <p>Notice that we initialize the embedding matrices randomly, so initially those embeddings won’t mean much.
+        However, the word2vec algorithm, given some data, will work on making the embeddings for the words that occur
+        together in the same sentence become more similar.</p>
 
     <p><strong><u>Step 4 (Calculate the loss):</u></strong></p>
-    <p>Intuitively, what this next step is trying to do is “push” the target word embedding closer to the context word embedding, while “pushing” them away from all other context word embeddings. To do this, we calculate the dot product between our target word’s vector embedding and every other context word embedding. Ideally, we want the dot product between our target word and the word that came in its context to be much larger than the dot product between our target word and any other word. In this case, we use a softmax on the resultant dot products and use a cross-entropy loss on the outputs of the softmax. Mathematically, we can represent this by the next equation (where u is the target embedding, v is the context embedding, V is the vocabulary size, and y is the loss):</p>
+    <p>Intuitively, what this next step is trying to do is “push” the target word embedding closer to the context word
+        embedding, while “pushing” them away from all other context word embeddings. To do this, we calculate the dot
+        product between our target word’s vector embedding and every other context word embedding. Ideally, we want the
+        dot product between our target word and the word that came in its context to be much larger than the dot product
+        between our target word and any other word. In this case, we use a softmax on the resultant dot products and use
+        a cross-entropy loss on the outputs of the softmax. Mathematically, we can represent this by the next equation
+        (where u is the target embedding, v is the context embedding, V is the vocabulary size, and y is the loss):</p>
     <p>
-        Have you noticed any problems with this approach? Well, it works well in theory but in practice is very slow. This is because every update to our embeddings requires calculating the dot product between our target word vector and the context embedding for each word in our vocabulary and updating each of those context embeddings. The authors solve this problem using Negative Sampling.
+        Have you noticed any problems with this approach? Well, it works well in theory but in practice is very slow.
+        This is because every update to our embeddings requires calculating the dot product between our target word
+        vector and the context embedding for each word in our vocabulary and updating each of those context embeddings.
+        The authors solve this problem using Negative Sampling.
     </p>
-   <h2>
-       Negative Sampling:
+    <h2>
+        Negative Sampling:
     </h2>
     <p>
-       The previous algorithm can be thought of as using every other word that is not our context word as 
-a negative sample for our positive target/context pair. To mitigate this, the authors instead randomly sample 5-20 words at random and treat them as negative samples. In this case, the authors use the sigmoid function instead of the softmax. For the positive sample, the sigmoid is trained to output 1 and for the negative samples, the sigmoid is trained to produce a zero.
- 
+        The previous algorithm can be thought of as using every other word that is not our context word as
+        a negative sample for our positive target/context pair. To mitigate this, the authors instead randomly sample
+        5-20 words at random and treat them as negative samples. In this case, the authors use the sigmoid function
+        instead of the softmax. For the positive sample, the sigmoid is trained to output 1 and for the negative
+        samples, the sigmoid is trained to produce a zero.
+
     </p>
-    
+
     <p>
-      The loss is then represented by:
-  
+        The loss is then represented by:
+
     </p>
     <p>
-        Where Vc is the positive sample and all Vj are the negative samples. Therefore, the negative sampling process can be seen as an alternative way to train our model without having to update all the context words in our vocabulary at every step.
+        Where Vc is the positive sample and all Vj are the negative samples. Therefore, the negative sampling process
+        can be seen as an alternative way to train our model without having to update all the context words in our
+        vocabulary at every step.
 
     </p>
     <h2>
         GloVe (Global Vectors for Word Representation)
     </h2>
     <p>
-       GloVe is a popular algorithm for creating word embeddings. Unlike Word2Vec, GloVe uses the overall co-occurrence patterns of words across the entire text corpus to learn word relationships.<br></br>
+        GloVe is a popular algorithm for creating word embeddings. Unlike Word2Vec, GloVe uses the overall co-occurrence
+        patterns of words across the entire text corpus to learn word relationships.<br></br>
 
-GloVe embeddings are a type of word embedding model designed to capture both the local context and the global statistical information of words in a corpus. Developed by researchers at Stanford, GloVe learns word representations by constructing word co-occurrence matrices from large text corpora, capturing meaningful patterns in word usage. By focusing on ratios of word co-occurrences rather than individual occurrences, GloVe embeddings effectively capture semantic relationships between words, such as similarity and analogy (e.g., "king" - "man" + "woman" ≈ "queen"). GloVe embeddings are widely used in NLP tasks, as they provide dense, meaningful representations that enhance machine learning models’ understanding of language
-. <br></br>
-GloVe works by first collecting large text data from sources like Wikipedia or news articles. It then builds a co-occurrence matrix, which records how often pairs of words appear close to each other within a certain window. This matrix helps the model capture relationships between words based on their context. For example, if “king” appears more frequently near “man” than “queen,” the model learns that “king” is more closely related to “man” than to “woman.” <br></br>
+        GloVe embeddings are a type of word embedding model designed to capture both the local context and the global
+        statistical information of words in a corpus. Developed by researchers at Stanford, GloVe learns word
+        representations by constructing word co-occurrence matrices from large text corpora, capturing meaningful
+        patterns in word usage. By focusing on ratios of word co-occurrences rather than individual occurrences, GloVe
+        embeddings effectively capture semantic relationships between words, such as similarity and analogy (e.g.,
+        "king" - "man" + "woman" ≈ "queen"). GloVe embeddings are widely used in NLP tasks, as they provide dense,
+        meaningful representations that enhance machine learning models’ understanding of language
+        . <br></br>
+        GloVe works by first collecting large text data from sources like Wikipedia or news articles. It then builds a
+        co-occurrence matrix, which records how often pairs of words appear close to each other within a certain window.
+        This matrix helps the model capture relationships between words based on their context. For example, if “king”
+        appears more frequently near “man” than “queen,” the model learns that “king” is more closely related to “man”
+        than to “woman.” <br></br>
 
-Next, the model creates word vectors by optimizing a mathematical function that minimizes the difference between the predicted co-occurrence (from the vectors) and the actual co-occurrence (from the matrix). This ensures that the distances between word vectors reflect meaningful relationships. The result is a set of high-dimensional vectors where similar words are represented by vectors close to each other. For instance, the vector for "king" will be close to the vectors for "queen" and "prince." Additionally, GloVe can capture linear relationships, such as “King - Man + Woman ≈ Queen.” These word vectors can then be used in various natural language processing tasks like sentiment analysis, text classification, and machine translation.
- 
+        Next, the model creates word vectors by optimizing a mathematical function that minimizes the difference between
+        the predicted co-occurrence (from the vectors) and the actual co-occurrence (from the matrix). This ensures that
+        the distances between word vectors reflect meaningful relationships. The result is a set of high-dimensional
+        vectors where similar words are represented by vectors close to each other. For instance, the vector for "king"
+        will be close to the vectors for "queen" and "prince." Additionally, GloVe can capture linear relationships,
+        such as “King - Man + Woman ≈ Queen.” These word vectors can then be used in various natural language processing
+        tasks like sentiment analysis, text classification, and machine translation.
+
     </p>
 
     <h2>
         BERT (Bidirectional Encoder Representations from Transformers)
     </h2>
-<p>
-    Last, but not least, we will discuss BERT for embedding words. The main advantage of using BERT for word embeddings is that contrary to other embedding types, the word embedding for a given word is not constant. It is affected by its context. For example, the word “Queen” would have different embeddings in the two following sentences:<br></br>
-
-<strong>Sentence 1: </strong>Queen Victoria was queen of the United Kingdom of Great Britain and Ireland from 20 June 1837 until she died in 1901.
-<br></br>
-<strong>Sentence 2: </strong>The queen is the most powerful piece in the game of chess. It can move any number of squares vertically, horizontally, or diagonally. 
-<br></br>
-
-This is mainly because BERT passes the whole sentence into a Transformer model (which we will discuss in more detail in a future blogspot.) Transformers are the most advanced architecture in NLP and they can process the sentence in a way that produces context-aware embeddings. Additionally, BERT provides an additional vector that serves as the embedding for the whole sentence commonly referred to as the <CLS> embedding. The <CLS> embedding is generated by adding the additional <CLS> token at the beginning of the sentence. Since BERT was trained to encode information about the whole sentence in the <CLS> token, it can provide a representation of the whole sentence. This can be seen in the next figure where Token 1 .. Token N are the original words in the sentence and V1 .. VN are the embeddings for the individual words. Vc will encode the whole sentence.
-
-</p>
     <p>
-        The main advantage of BERT is that it provides context-aware embeddings and also provides an embedding to our whole sentence. To learn the full details of implementing BERT, we’ll need knowledge of transformers and attention, which we will talk about in the future, but is unfortunately out of scope for this blog post, so we’ll just stick to this high-level explanation for now.
+        Last, but not least, we will discuss BERT for embedding words. The main advantage of using BERT for word
+        embeddings is that contrary to other embedding types, the word embedding for a given word is not constant. It is
+        affected by its context. For example, the word “Queen” would have different embeddings in the two following
+        sentences:<br></br>
+
+        <strong>Sentence 1: </strong>Queen Victoria was queen of the United Kingdom of Great Britain and Ireland from 20
+        June 1837 until she died in 1901.
+        <br></br>
+        <strong>Sentence 2: </strong>The queen is the most powerful piece in the game of chess. It can move any number
+        of squares vertically, horizontally, or diagonally.
+        <br></br>
+
+        This is mainly because BERT passes the whole sentence into a Transformer model (which we will discuss in more
+        detail in a future blogspot.) Transformers are the most advanced architecture in NLP and they can process the
+        sentence in a way that produces context-aware embeddings. Additionally, BERT provides an additional vector that
+        serves as the embedding for the whole sentence commonly referred to as the <CLS> embedding. The <CLS> embedding
+                is generated by adding the additional <CLS> token at the beginning of the sentence. Since BERT was
+                    trained to encode information about the whole sentence in the <CLS> token, it can provide a
+                        representation of the whole sentence. This can be seen in the next figure where Token 1 .. Token
+                        N are the original words in the sentence and V1 .. VN are the embeddings for the individual
+                        words. Vc will encode the whole sentence.
+
+    </p>
+    <p>
+        The main advantage of BERT is that it provides context-aware embeddings and also provides an embedding to our
+        whole sentence. To learn the full details of implementing BERT, we’ll need knowledge of transformers and
+        attention, which we will talk about in the future, but is unfortunately out of scope for this blog post, so
+        we’ll just stick to this high-level explanation for now.
 
     </p>
 
@@ -426,7 +523,7 @@ This is mainly because BERT passes the whole sentence into a Transformer model (
         <input type="radio" name="q1" value="C"> C) TF-IDF and LDA<br>
         <input type="radio" name="q1" value="D"> D) K-Means and PCA<br>
     </div>
-    
+
     <div class="question">
         <p>2. What does cosine similarity measure?</p>
         <input type="radio" name="q2" value="A"> A) The Euclidean distance between two points.<br>
@@ -434,21 +531,21 @@ This is mainly because BERT passes the whole sentence into a Transformer model (
         <input type="radio" name="q2" value="C"> C) The average of two vectors.<br>
         <input type="radio" name="q2" value="D"> D) The length of the longest vector.<br>
     </div>
-    
+
     <button onclick="checkAnswers()">Submit Answers</button>
-    
+
     <p id="result"></p>
-    
+
     <script>
         function checkAnswers() {
             let correct = 0;
             let total = 2; // Total number of questions
-    
+
             // Check answers for word embeddings
             if (document.querySelector('input[name="q1"]:checked')?.value === "correct") correct++;
             // Check answer for cosine similarity
             if (document.querySelector('input[name="q2"]:checked')?.value === "correct") correct++;
-    
+
             document.getElementById("result").innerText = `You got ${correct} out of ${total} correct!`;
         }
     </script>
