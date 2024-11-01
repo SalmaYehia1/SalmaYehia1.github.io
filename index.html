@@ -113,59 +113,122 @@
         is only equal to 1 at the last index and equal to 0 elsewhere.
     </p>
 
-    <img src="Figures/OneHotFigure.jpg" alt="One-hot encoding example" style="width: 700px; max-width:700px; margin-top:20px;">
+    <img src="Figures/OneHotFigure.jpg" alt="One-hot encoding example"
+        style="width: 700px; max-width:700px; margin-top:20px;">
 
 
     <p> But why are hot encodings a bad idea? Well, there are a couple of problems with this approach:</p>
     <ol>
         <li>The Vector Dimension is too large = Vocab Size.<br></li>
         <li>The Vectors are sparse, “mostly empty”. Even though we’re using many dimensions per word, we’re
-                wasting most of
-                our vector dimensions by setting them to 0. We’re only making use of 1 single dimension per word when we
-                set it
-                equal to 1.<br></li>
+            wasting most of
+            our vector dimensions by setting them to 0. We’re only making use of 1 single dimension per word when we
+            set it
+            equal to 1.<br></li>
         <li> All words are equally distant in our vector space. As we shall see later on, other techniques for
-                word
-                embeddings have an interesting property in that words with similar meanings get embedded by vectors that
-                are
-                closer to each other.<br></li>
+            word
+            embeddings have an interesting property in that words with similar meanings get embedded by vectors that
+            are
+            closer to each other.<br></li>
     </ol>
 
 
-   <h3>
-      Bag Of Words (BOW) 
-   </h3>
+    <h3>
+        Bag Of Words (BOW)
+    </h3>
     <p>
-        A very similar technique to one-hot encoding used to embed a document, instead of a single word, is known as Bag of Words. When embedding a document with a bag of words, we’re essentially getting the one-hot encoding of every word in the document and summing them all into one single vector representing the document, thus the text is defined as the frequency of words in a document while ignoring the order. The next figure shows how a bag of words would work for 3 sentences, each representing a different document, and a vocab size = 4:
+        A very similar technique to one-hot encoding used to embed a document, instead of a single word, is known as Bag
+        of Words. When embedding a document with a bag of words, we’re essentially getting the one-hot encoding of every
+        word in the document and summing them all into one single vector representing the document, thus the text is
+        defined as the frequency of words in a document while ignoring the order. The next figure shows how a bag of
+        words would work for 3 sentences, each representing a different document, and a vocab size = 4:
     </p>
-  <figure>
-    <img src="https://miro.medium.com/v2/resize:fit:1200/format:webp/1*axffCQ9ae0FHXxhuy66FbA.png" alt="Bag of Words Model" width="600">
-    <figcaption>Source: <a href="https://ayselaydin.medium.com/4-bag-of-words-model-in-nlp-434cb38cdd1b">4 — Bag of Words Model in NLP</a></figcaption>
-</figure>
+    <figure>
+        <img src="https://miro.medium.com/v2/resize:fit:1200/format:webp/1*axffCQ9ae0FHXxhuy66FbA.png"
+            alt="Bag of Words Model" width="600">
+        <figcaption>Source: <a href="https://ayselaydin.medium.com/4-bag-of-words-model-in-nlp-434cb38cdd1b">4 — Bag of
+                Words Model in NLP</a></figcaption>
+    </figure>
 
     <p>
-         
-It provides a more compact representation than one-hot encoding but still lacks context and semantic meaning. Each position in the vector corresponds to a word in the vocabulary, in the order they were listed.
+
+        It provides a more compact representation than one-hot encoding but still lacks context and semantic meaning.
+        Each position in the vector corresponds to a word in the vocabulary, in the order they were listed.
 
     </p>
     <ol>
-    <li>
-        Similar to one-hot encoding, the vector dimension is still too large = Vocabulary Size.
-    </li>
-    <li>
-        Similar to one-hot encoding, the Bag of Words will still be mostly empty. While the vector in Bag of Words wouldn’t be as empty as with One-Hot-Encoded words, it will still have many unused dimensions in our vector set to 0. For a bag of words to ever have a vector that isn’t mostly empty, it needs to have a TON of words. For example, if we want more than half of our vector to not be set to 0, then we need the encoded document to have half of ALL the words in our vocabulary. For a vocab size = 50,000, we would need our document to have at least 25,000 unique words. However, this will usually not be the case for any document we’re dealing with, so we will end up with mostly empty vectors.
-    </li>
-    <li>
-        Completely ignores the order. While this disadvantage is related to the problem of embedding documents rather than embedding a single word, it is an important problem that appears whenever we try to embed a document as the sum of embeddings for the words in that document.
-    </li>
-</ol>
+        <li>
+            Similar to one-hot encoding, the vector dimension is still too large = Vocabulary Size.
+        </li>
+        <li>
+            Similar to one-hot encoding, the Bag of Words will still be mostly empty. While the vector in Bag of Words
+            wouldn’t be as empty as with One-Hot-Encoded words, it will still have many unused dimensions in our vector
+            set to 0. For a bag of words to ever have a vector that isn’t mostly empty, it needs to have a TON of words.
+            For example, if we want more than half of our vector to not be set to 0, then we need the encoded document
+            to have half of ALL the words in our vocabulary. For a vocab size = 50,000, we would need our document to
+            have at least 25,000 unique words. However, this will usually not be the case for any document we’re dealing
+            with, so we will end up with mostly empty vectors.
+        </li>
+        <li>
+            Completely ignores the order. While this disadvantage is related to the problem of embedding documents
+            rather than embedding a single word, it is an important problem that appears whenever we try to embed a
+            document as the sum of embeddings for the words in that document.
+        </li>
+    </ol>
     <h3>
         Co-occurrence counts
     </h3>
     <p>
-      Another way to embed words is by using a co-occurrence matrix. By measuring how often each word occurs with other words we can find a suitable representation of those words. In the next figure, for example, we can see that the word “digital” occurs with “computer”  1670 times, which is way more than “cherry” and “computer” for example. We can use this technique to embed the words by the counts in their corresponding rows.  
+        Another way to embed words is by using a co-occurrence matrix. By measuring how often each word occurs with
+        other words we can find a suitable representation of those words. In the next figure, for example, we can see
+        that the word “digital” occurs with “computer” 1670 times, which is way more than “cherry” and “computer” for
+        example. We can use this technique to embed the words by the counts in their corresponding rows.
     </p>
-    
+
+    <h3>
+        Term Frequency-Inverse Document Frequency (TF-IDF)
+    </h3>
+    <p>
+        TF-IDF is a statistical measure used to evaluate the importance of a word in a document relative to a collection
+        of documents. It's commonly used in information retrieval and text mining to help rank the relevance of
+        documents based on keyword searches.
+
+        It works by essentially measuring, for every word, how much more commonly it occurs in the specific document we
+        are embedding relative to other documents in our data.
+
+        A term like the word “the”, which could appear a lot in our document but also appears in every other document
+        does not mean much. However, a scientific article with the term “DNA” that frequently appears in that article,
+        but does not frequently appear in general within other documents in our text will likely be a much more powerful
+        measure of the meaning of our document.<br><br>
+
+        <b>Disadvantages:</b>
+    <ol>
+        <li>
+            Lack of semantic understanding as it treats words as individual units ignoring their meaning and it doesn't
+            understand the meaning of words in different contexts.<br><br>
+        </li>
+        <li>
+            Ignoring word order results in the loss of important contextual information.<br><br>
+
+        </li>
+        <li>
+            TF-IDF vectors can be very sparse like One Hot Encoding, especially for large vocabularies, leading to
+            inefficiencies in storage and computation.<br><br>
+        </li>
+        <li>
+            Synonymous words are treated as distinct, even though they have the same meaning, leading to redundancy and
+            lower-quality features.<br><br>
+        </li>
+        <li>
+            It gives weight to words based on how often they appear in a document and how rare they are. But it
+            struggles with stopwords and common words like “the,” “and,” or “is” because these words show up a lot but
+            don’t add much meaning so this makes it harder for models to find the important patterns in data.<br><br>
+        </li>
+
+    </ol>
+
+    </p>
+
 
 
 </body>
