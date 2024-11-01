@@ -113,9 +113,11 @@
         is only equal to 1 at the last index and equal to 0 elsewhere.
     </p>
 
-    <img src="Figures/OneHotFigure.jpg" alt="One-hot encoding example"
-        style="width: 700px; max-width:700px; margin-top:20px;">
 
+    <figure>
+        <img src="Figures/OneHotFigure.jpg" alt="One-hot encoding example"
+            style="width: 700px; max-width:700px; margin-top:20px;">
+    </figure>
 
     <p> But why are hot encodings a bad idea? Well, there are a couple of problems with this approach:</p>
     <ol>
@@ -229,7 +231,30 @@
 
     </p>
 
+    <h3>
+        Mathematics Behind Word Embeddings
+    </h3>
 
+    <p>
+        To understand word embeddings better, let’s look at them in a more indepth way. When creating word embeddings,
+        we want to position similar words close to each other in a high-dimensional space, which helps in understanding
+        their meanings and relationships. The main method used to measure this notion of “closeness” in a high
+        dimensional space is the <b>"cosine similarity"</b>, which calculates the direction and magnitude of word vectors.
+        To
+        find cosine similarity, we calculate the dot product of two vectors, the sum of the products of their
+        corresponding components, and then normalize by their norms. A higher dot product means stronger relationships
+        between the words.
+
+        In the following figure for example, ideally, we want the angle between our learned embedding vectors for Apple
+        and Orange to be smaller than the angle between Apple and Chair, thus the cosine similarity should be higher in
+        the case of Apple and Orange than in Apple and Chair.
+
+    </p>
+
+    <figure>
+        <img src="Figures/CosineSimilarity.png" alt="Cosine Similarity"
+            style="width: 1000px; margin-top:20px;">
+    </figure>
 
 </body>
 
