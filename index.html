@@ -95,7 +95,7 @@
         <li><strong>GloVe (Global Vectors for Word Representation)</strong></li>
         <li><strong>BERT</strong></li>
     </ol>
-<h3>Knowledge Check</h3>
+
 
 <!-- Question Section with Styled Border -->
 <div class="knowledge-check">
@@ -490,41 +490,44 @@
         vocabulary at every step.
 
     </p>
-<h3>
-    Knowledge Check
-</h3>
 
-<div class="question">
-    <p>1. In SkipGram with negative sampling, how many parameters are updated for every context/target pair (t,c) where K = Number of negative samples?</p>
-    <input type="radio" name="q4" value="A"> A) K x d<br>
-    <input type="radio" name="q4" value="B"> B) 2 x K x d<br>
-    <input type="radio" name="q4" value="C"> C) (K+1) x d<br>
-    <input type="radio" name="q4" value="correct"> D) (K+2) x d<br>
-    <p class="feedback" id="feedback-q4"></p>
-</div>
 
-<button id="submit-button" onclick="checkSkipGramAnswer()">Submit Answer</button>
+<!-- First Question -->
+<div class="knowledge-check">
+    <div class="question">
+        <p>1. In SkipGram with negative sampling, how many parameters are updated for every context/target pair (t,c) where K = Number of negative samples?</p>
+        <input type="radio" name="q4" value="A"> A) K x d<br>
+        <input type="radio" name="q4" value="B"> B) 2 x K x d<br>
+        <input type="radio" name="q4" value="C"> C) (K+1) x d<br>
+        <input type="radio" name="q4" value="correct"> D) (K+2) x d<br>
+        <p class="feedback" id="feedback-q4"></p>
+    </div>
 
-<!-- Feedback and Explanation for Question 1 -->
-<div id="explanation-container" style="display:none; margin-top: 20px;">
-    <span id="feedback-q4"></span>
+    <button id="submit-button" onclick="checkSkipGramAnswer()">Submit Answer</button>
+
+    <!-- Feedback and Explanation for Question 1 -->
+    <div id="explanation-container" style="display:none; margin-top: 20px;">
+        <span id="feedback-q4"></span>
+    </div>
 </div>
 
 <!-- Second Question -->
-<div class="question">
-    <p>2. How many parameters does SkipGram have? (d = embedding dimension, |V| = vocab size, m = context window)</p>
-    <input type="radio" name="q3" value="A"> A) d x |V|<br>
-    <input type="radio" name="q3" value="correct"> B) 2 x d x |V|<br>
-    <input type="radio" name="q3" value="C"> C) 2 x m x |V|<br>
-    <input type="radio" name="q3" value="D"> D) 2 x m x d x |V|.<br>
-    <p class="feedback" id="feedback-q3"></p>
-</div>
+<div class="knowledge-check">
+    <div class="question">
+        <p>2. How many parameters does SkipGram have? (d = embedding dimension, |V| = vocab size, m = context window)</p>
+        <input type="radio" name="q3" value="A"> A) d x |V|<br>
+        <input type="radio" name="q3" value="correct"> B) 2 x d x |V|<br>
+        <input type="radio" name="q3" value="C"> C) 2 x m x |V|<br>
+        <input type="radio" name="q3" value="D"> D) 2 x m x d x |V|.<br>
+        <p class="feedback" id="feedback-q3"></p>
+    </div>
 
-<button id="submit-button-2" onclick="checkSkipGramParamsAnswer()">Submit Answer</button>
+    <button id="submit-button-2" onclick="checkSkipGramParamsAnswer()">Submit Answer</button>
 
-<!-- Feedback and Explanation for Question 2 -->
-<div id="explanation-container-params" style="display:none; margin-top: 20px;">
-    <span id="feedback-q3"></span>
+    <!-- Feedback and Explanation for Question 2 -->
+    <div id="explanation-container-params" style="display:none; margin-top: 20px;">
+        <span id="feedback-q3"></span>
+    </div>
 </div>
 
 <script>
@@ -566,6 +569,15 @@
 </script>
 
 <style>
+    .knowledge-check {
+        border: 2px solid #4CAF50; /* Border color */
+        border-radius: 10px; /* Rounded corners */
+        padding: 20px; /* Inner spacing */
+        background-color: #f9f9f9; /* Background color */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+        margin: 20px 0; /* Margin around the section */
+    }
+
     #submit-button, #submit-button-2 {
         background-color: #4CAF50; 
         border: none;
