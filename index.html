@@ -418,8 +418,10 @@
     <h3>
         Knowledge Check
     </h3>
- <div class="question">
-    <p>In SkipGram with negative sampling, how many parameters are updated for every context/target pair (t,c) where K = Number of negative samples?</p>
+ 
+
+<div class="question">
+    <p>1. In SkipGram with negative sampling, how many parameters are updated for every context/target pair (t,c) where K = Number of negative samples?</p>
     <input type="radio" name="q4" value="A"> A) K x d<br>
     <input type="radio" name="q4" value="B"> B) 2 x K x d<br>
     <input type="radio" name="q4" value="C"> C) (K+1) x d<br>
@@ -429,12 +431,29 @@
 
 <button id="submit-button" onclick="checkSkipGramAnswer()">Submit Answer</button>
 
+<p id="explanation" style="display:none; margin-top: 20px;"></p>
+
+<!-- Second Question -->
+<div class="question">
+    <p>2. How many parameters does SkipGram have? (d = embedding dimension, |V| = vocab size, m = context window)</p>
+    <input type="radio" name="q3" value="A"> A) d x |V|<br>
+    <input type="radio" name="q3" value="correct"> B) 2 x d x |V|<br>
+    <input type="radio" name="q3" value="C"> C) 2 x m x |V|<br>
+    <input type="radio" name="q3" value="D"> D) 2 x m x d x |V|.<br>
+    <p class="feedback" id="feedback-q3"></p>
+</div>
+
+<button id="submit-button-2" onclick="checkSkipGramParamsAnswer()">Submit Answer</button>
+
+<p id="explanation-params" style="display:none; margin-top: 20px;"></p>
+
 <script>
     function checkSkipGramAnswer() {
         const correctAnswer = "correct"; 
         const userAnswer = document.querySelector('input[name="q4"]:checked')?.value;
 
         document.getElementById("feedback-q4").innerText = '';
+        document.getElementById("explanation").style.display = "none";
 
         if (userAnswer === correctAnswer) {
             document.getElementById("feedback-q4").innerText = "Correct! In SkipGram with negative sampling, (K + 2) x d parameters are updated for each context/target pair.";
@@ -443,11 +462,33 @@
             document.getElementById("feedback-q4").innerText = "Incorrect. Try again!";
             document.getElementById("feedback-q4").style.color = "red";
         }
+
+        document.getElementById("explanation").innerText = "In the SkipGram model, the total number of parameters updated for each context/target pair is (K + 2) x d, where K is the number of negative samples and d is the embedding dimension.";
+        document.getElementById("explanation").style.display = "block";
+    }
+
+    function checkSkipGramParamsAnswer() {
+        const correctAnswer = "correct"; 
+        const userAnswer = document.querySelector('input[name="q3"]:checked')?.value;
+
+        document.getElementById("feedback-q3").innerText = '';
+        document.getElementById("explanation-params").style.display = "none";
+
+        if (userAnswer === correctAnswer) {
+            document.getElementById("feedback-q3").innerText = "Correct! SkipGram has 2 x d x |V| parameters.";
+            document.getElementById("feedback-q3").style.color = "green";
+        } else {
+            document.getElementById("feedback-q3").innerText = "Incorrect. Try again!";
+            document.getElementById("feedback-q3").style.color = "red";
+        }
+
+        document.getElementById("explanation-params").innerText = "The SkipGram model has a total of 2 x d x |V| parameters, where d represents the embedding dimension and |V| denotes the vocabulary size. This accounts for the weights in both the input and output layers, facilitating the prediction of context words given a target word.";
+        document.getElementById("explanation-params").style.display = "block";
     }
 </script>
 
 <style>
-    #submit-button {
+    #submit-button, #submit-button-2 {
         background-color: #4CAF50; 
         border: none;
         color: white;
@@ -462,10 +503,11 @@
         transition: background-color 0.3s;
     }
 
-    #submit-button:hover {
+    #submit-button:hover, #submit-button-2:hover {
         background-color: #45a049; 
     }
 </style>
+
 
 
     <h2>
