@@ -314,10 +314,12 @@ You might be wondering why we use two embeddings per word. Well, here's the reas
     </ol>
     <p><strong>Step 1 (Build our Dataset):</strong></p>
     <p>To build our dataset from a set of English sentences, we first choose a context window length = 4 for example. Then for every sentence, for every word, treat it as a target word and treat the 4 words before and after it as context words. Add each one of those context/target pairs independently into our dataset. The result of this for a sentence, such as “This is an example sentence in our corpus” will be:</p>
-    <p>(This, is) (This, an) (This, example) (This, sentence)<br>
-       (is, This) (is, an) (is, example) (is, sentence)<br>
-       (an, This) (an, is) (an, example) (an, sentence) (an, in) (an, our)<br>
-       And so on ...</p>
+    </p>
+      <ul>
+        <li>(This, is) (This, an) (This, example) (This, sentence)</li>
+        <li>(is, This) (is, an) (is, example) (is, sentence)</li>
+        <li>(an, This) (an, is) (an, example) (an, sentence) (an, in) (an, our)</li>
+    </ul>
     <p>Where the first word in each parenthesis is the target word and the second word is the context word.</p>
 
     <p><strong>Step 2 (Sample a Pair):</strong></p>
