@@ -347,62 +347,61 @@
         <img src="Figures/CosineSimilarity.png" alt="Cosine Similarity" style="width: 1000px; margin-top:5px;">
     </figure>
 
-
-<h3>Knowledge Check</h3>
-
-<!-- Knowledge Check Section with Styled Border -->
 <div class="cosine-knowledge-check">
     <!-- Question -->
     <div class="cosine-question">
         <p>What does cosine similarity measure?</p>
         <input type="radio" name="cosine-similarity-answer" value="A"> A) The Euclidean distance between two points.<br>
-        <input type="radio" name="cosine-similarity-answer" value="correct"> B) The angle between two vectors.<br>
+        <input type="radio" name="cosine-similarity-answer" value="B"> B) The angle between two vectors.<br>
         <input type="radio" name="cosine-similarity-answer" value="C"> C) The average of two vectors.<br>
         <input type="radio" name="cosine-similarity-answer" value="D"> D) The length of the longest vector.<br>
+        <p class="feedback" id="feedback-cosine"></p>
     </div>
-
-    <button id="cosine-submit" onclick="checkCosineAnswer()">Submit Answer</button>
 
     <!-- Feedback and Explanation for Question -->
-    <div id="cosine-feedback-container" style="display:none; margin-top: 20px;">
-        <p id="cosine-feedback"></p>
+    <div id="cosine-explanation-container" style="display:none; margin-top: 20px;">
+        <span id="feedback-cosine"></span>
     </div>
+
+    <button id="cosine-submit-button" onclick="checkCosineAnswer()">Submit Answer</button>
 </div>
 
 <script>
     function checkCosineAnswer() {
-        const correctAnswer = "correct";
+        const correctAnswer = "B"; // Correct answer is B
         const userAnswer = document.querySelector('input[name="cosine-similarity-answer"]:checked')?.value;
 
+        // Reset feedback text and hide explanation initially
+        document.getElementById("feedback-cosine").innerText = '';
+        document.getElementById("cosine-explanation-container").style.display = "none";
+
         if (userAnswer === correctAnswer) {
-            const explanationText = "Cosine similarity measures the angle between two vectors. It’s useful in text analysis and other applications where assessing similarity in direction, not magnitude, is important.";
-            document.getElementById("cosine-feedback").innerHTML = "<strong>Correct!</strong> " + explanationText;
-            document.getElementById("cosine-feedback").style.color = "green";
-            document.getElementById("cosine-feedback-container").style.display = "block";
+            const explanationText = "Cosine similarity measures the angle between two vectors. It’s commonly used to evaluate similarity based on direction rather than magnitude, especially in text analysis and recommendation systems.";
+            document.getElementById("feedback-cosine").innerHTML = "<strong>Correct!</strong> " + explanationText;
+            document.getElementById("feedback-cosine").style.color = "green";
+            document.getElementById("cosine-explanation-container").style.display = "block";
         } else if (userAnswer) {
-            document.getElementById("cosine-feedback").innerHTML = "<strong>Incorrect!</strong> Try again!";
-            document.getElementById("cosine-feedback").style.color = "red";
-            document.getElementById("cosine-feedback-container").style.display = "block";
+            document.getElementById("feedback-cosine").innerHTML = "<strong>Incorrect!</strong> Try again!";
+            document.getElementById("feedback-cosine").style.color = "red";
         } else {
-            document.getElementById("cosine-feedback").innerHTML = "<strong>Please select an answer.</strong>";
-            document.getElementById("cosine-feedback").style.color = "orange";
-            document.getElementById("cosine-feedback-container").style.display = "block";
+            document.getElementById("feedback-cosine").innerHTML = "<strong>Please select an answer.</strong>";
+            document.getElementById("feedback-cosine").style.color = "orange";
         }
     }
 </script>
 
 <style>
     .cosine-knowledge-check {
-        border: 2px solid #4CAF50;
-        border-radius: 10px;
-        padding: 20px;
-        background-color: #f9f9f9;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        margin: 20px 0;
+        border: 2px solid #4CAF50; /* Border color */
+        border-radius: 10px; /* Rounded corners */
+        padding: 20px; /* Inner spacing */
+        background-color: #f9f9f9; /* Background color */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+        margin: 20px 0; /* Margin around the section */
     }
 
-    #cosine-submit {
-        background-color: #4CAF50;
+    #cosine-submit-button {
+        background-color: #4CAF50; 
         border: none;
         color: white;
         padding: 10px 20px;
@@ -413,11 +412,10 @@
         transition: background-color 0.3s;
     }
 
-    #cosine-submit:hover {
-        background-color: #45a049;
+    #cosine-submit-button:hover {
+        background-color: #45a049; 
     }
 </style>
-
 
     <h2>
         Word2Vec
