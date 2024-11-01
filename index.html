@@ -130,39 +130,13 @@
     </ol>
 
 
-    <div class="question">
-        <p>1. Which techniques create word embeddings?</p>
-        <input type="radio" name="q1" value="correct"> A) Word2Vec and GloVe<br>
-        <input type="radio" name="q1" value="B"> B) Word2Vec and FastText<br>
-        <input type="radio" name="q1" value="C"> C) TF-IDF and LDA<br>
-        <input type="radio" name="q1" value="D"> D) K-Means and PCA<br>
-    </div>
-
-    <div class="question">
-        <p>2. What does cosine similarity measure?</p>
-        <input type="radio" name="q2" value="A"> A) The Euclidean distance between two points.<br>
-        <input type="radio" name="q2" value="correct"> B) The angle between two vectors.<br>
-        <input type="radio" name="q2" value="C"> C) The average of two vectors.<br>
-        <input type="radio" name="q2" value="D"> D) The length of the longest vector.<br>
-    </div>
-
-    <button onclick="checkAnswers()">Submit Answers</button>
-
-    <p id="result"></p>
-
-    <script>
-        function checkAnswers() {
-            let correct = 0;
-            let total = 2; // Total number of questions
-
-            // Check answers for word embeddings
-            if (document.querySelector('input[name="q1"]:checked')?.value === "correct") correct++;
-            // Check answer for cosine similarity
-            if (document.querySelector('input[name="q2"]:checked')?.value === "correct") correct++;
-
-            document.getElementById("result").innerText = `You got ${correct} out of ${total} correct!`;
-        }
-    </script>
+   <h3>
+      Bag Of Words (BOW) 
+   </h3>
+    <p>
+        A very similar technique to one-hot encoding used to embed a document, instead of a single word, is known as Bag of Words. When embedding a document with a bag of words, we’re essentially getting the one-hot encoding of every word in the document and summing them all into one single vector representing the document, thus the text is defined as the frequency of words in a document while ignoring the order. The next figure shows how a bag of words would work for 3 sentences, each representing a different document, and a vocab size = 4:
+    </p>
+    <img src="https://miro.medium.com/v2/resize:fit:720/1*VRBO1zA0QGTvRY69pl7gAw.png" alt="Bag of Words Model">
 
 </body>
 
