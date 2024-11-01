@@ -549,6 +549,65 @@
         tasks like sentiment analysis, text classification, and machine translation.
 
     </p>
+<h3>Knowledge Check</h3>
+
+<!-- Question -->
+<div class="question">
+    <p>How does GloVe differ from Word2Vec in its approach to word embeddings?</p>
+    <input type="radio" name="q1" value="A"> A) It uses only local context to learn word relationships.<br>
+    <input type="radio" name="q1" value="correct"> B) It relies on overall co-occurrence patterns across the entire corpus.<br>
+    <input type="radio" name="q1" value="C"> C) It constructs word vectors randomly.<br>
+    <input type="radio" name="q1" value="D"> D) It does not require a text corpus.<br>
+    <p class="feedback" id="feedback-q1"></p>
+</div>
+
+<button id="submit-button" onclick="checkGloVeAnswer()">Submit Answer</button>
+
+<!-- Feedback and Explanation for Question -->
+<div id="explanation-container" style="display:none; margin-top: 20px;">
+    <span id="feedback-q1"></span>
+</div>
+
+<script>
+    function checkGloVeAnswer() {
+        const correctAnswer = "correct"; 
+        const userAnswer = document.querySelector('input[name="q1"]:checked')?.value;
+
+        document.getElementById("feedback-q1").innerText = '';
+        document.getElementById("explanation-container").style.display = "none";
+
+        if (userAnswer === correctAnswer) {
+            const explanationText = "GloVe captures the overall co-occurrence patterns of words in a corpus, allowing it to learn relationships based on how often words appear together across the entire text, unlike Word2Vec, which focuses more on local contexts.";
+            document.getElementById("feedback-q1").innerHTML = "<strong>Correct! </strong> " + explanationText;
+            document.getElementById("feedback-q1").style.color = "green";
+            document.getElementById("explanation-container").style.display = "block";
+        } else {
+            document.getElementById("feedback-q1").innerHTML = "<strong>Incorrect!</strong> Try again!";
+            document.getElementById("feedback-q1").style.color = "red";
+        }
+    }
+</script>
+
+<style>
+    #submit-button {
+        background-color: #4CAF50; 
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    #submit-button:hover {
+        background-color: #45a049; 
+    }
+</style>
 
     <h2>
         BERT (Bidirectional Encoder Representations from Transformers)
