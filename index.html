@@ -121,17 +121,17 @@
 
     <p> But why are hot encodings a bad idea? Well, there are a couple of problems with this approach:</p>
     <ol>
-        <li>The Vector Dimension is too large = Vocab Size.<br></li>
+        <li>The Vector Dimension is too large = Vocab Size.<br><br></li>
         <li>The Vectors are sparse, “mostly empty”. Even though we’re using many dimensions per word, we’re
             wasting most of
             our vector dimensions by setting them to 0. We’re only making use of 1 single dimension per word when we
             set it
-            equal to 1.<br></li>
+            equal to 1.<br><br></li>
         <li> All words are equally distant in our vector space. As we shall see later on, other techniques for
             word
             embeddings have an interesting property in that words with similar meanings get embedded by vectors that
             are
-            closer to each other.<br></li>
+            closer to each other.<br><br></li>
     </ol>
 
 
@@ -161,7 +161,7 @@
      <b>Disadvantages:</b>
     <ol>
         <li>
-            Similar to one-hot encoding, the vector dimension is still too large = Vocabulary Size.
+            Similar to one-hot encoding, the vector dimension is still too large = Vocabulary Size.<br><br>
         </li>
         <li>
             Similar to one-hot encoding, the Bag of Words will still be mostly empty. While the vector in Bag of Words
@@ -170,12 +170,12 @@
             For example, if we want more than half of our vector to not be set to 0, then we need the encoded document
             to have half of ALL the words in our vocabulary. For a vocab size = 50,000, we would need our document to
             have at least 25,000 unique words. However, this will usually not be the case for any document we’re dealing
-            with, so we will end up with mostly empty vectors.
+            with, so we will end up with mostly empty vectors.<br><br>
         </li>
         <li>
             Completely ignores the order. While this disadvantage is related to the problem of embedding documents
             rather than embedding a single word, it is an important problem that appears whenever we try to embed a
-            document as the sum of embeddings for the words in that document.
+            document as the sum of embeddings for the words in that document.<br><br>
         </li>
     </ol>
     <h3>
@@ -185,7 +185,6 @@
         Another way to embed words is by using a co-occurrence matrix. By measuring how often each word occurs with
         other words we can find a suitable representation of those words. In the next figure, for example, we can see
         that the word “digital” occurs with “computer” 1670 times, which is way more than “cherry” and “computer” for
-        example. We can use this technique to embed the words by the counts in their corresponding rows.
     </p>
 
     <h3>
@@ -313,7 +312,7 @@
         meaningful interactions between humans and machines.
     </p>
 
-    <br><br><br><br>
+    <br>
 
     <h1>Quiz Time !</h1>
     <div class="question">
