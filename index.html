@@ -95,6 +95,76 @@
         <li><strong>GloVe (Global Vectors for Word Representation)</strong></li>
         <li><strong>BERT</strong></li>
     </ol>
+<h3>Knowledge Check</h3>
+
+<!-- Question Section with Styled Border -->
+<div class="knowledge-check">
+    <div class="question">
+        <p>Which techniques create word embeddings?</p>
+        <input type="radio" name="q2" value="A"> A) Word2Vec and GloVe<br>
+        <input type="radio" name="q2" value="B"> B) Word2Vec and FastText<br>
+        <input type="radio" name="q2" value="C"> C) TF-IDF and LDA<br>
+        <input type="radio" name="q2" value="D"> D) K-Means and PCA<br>
+        <p class="feedback" id="feedback-q2"></p>
+    </div>
+
+    <button id="submit-button" onclick="checkAnswer()">Submit Answer</button>
+
+    <!-- Feedback and Explanation for Question -->
+    <div id="explanation-container" style="display:none; margin-top: 20px;">
+        <span id="feedback-q2"></span>
+    </div>
+</div>
+
+<script>
+    function checkAnswer() {
+        const correctAnswer = "A"; // Update this if you choose another correct answer
+        const userAnswer = document.querySelector('input[name="q2"]:checked')?.value;
+
+        document.getElementById("feedback-q2").innerText = '';
+        document.getElementById("explanation-container").style.display = "none";
+
+        if (userAnswer === correctAnswer) {
+            const explanationText = "Word2Vec and GloVe are popular techniques for creating word embeddings. Word2Vec uses neural networks to create embeddings based on the context of words, while GloVe (Global Vectors for Word Representation) uses matrix factorization techniques to learn word representations. Both methods capture semantic meanings and relationships between words.";
+            document.getElementById("feedback-q2").innerHTML = "<strong>Correct!</strong> " + explanationText;
+            document.getElementById("feedback-q2").style.color = "green";
+            document.getElementById("explanation-container").style.display = "block";
+        } else {
+            document.getElementById("feedback-q2").innerHTML = "<strong>Incorrect!</strong> Try again!";
+            document.getElementById("feedback-q2").style.color = "red";
+        }
+    }
+</script>
+
+<style>
+    .knowledge-check {
+        border: 2px solid #4CAF50; /* Border color */
+        border-radius: 10px; /* Rounded corners */
+        padding: 20px; /* Inner spacing */
+        background-color: #f9f9f9; /* Background color */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+        margin: 20px 0; /* Margin around the section */
+    }
+
+    #submit-button {
+        background-color: #4CAF50; 
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    #submit-button:hover {
+        background-color: #45a049; 
+    }
+</style>
 
     <h3>
         One Hot Encoding
@@ -268,7 +338,7 @@
         between the words.
 
         In the following figure for example, ideally, we want the angle between our learned embedding vectors for Apple
-        and Orange to be smaller than the angle between Apple and Chair, thus the cosine similarity should be higher in
+        and Orange to be smaller than the angle between Apple and the Chair, thus the cosine similarity should be higher in
         the case of Apple and Orange than in Apple and Chair.
 
     </p>
