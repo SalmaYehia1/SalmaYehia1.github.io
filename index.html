@@ -19,7 +19,24 @@
 <h1>From Words to Vectors: The Journey of Word Embeddings</h1>
 <p>Have you ever wondered how AI models like Chat GPT and Gemini see words and sentences? Well, just like everything with AI, it’s all numbers! Words and sentences are converted to “vectors” before being passed to AI models. Vectors, if you’re not familiar with them, are just a list of numbers. As we shall see in this post, current AI models represent each word in human language by a unique list of numbers, but where it gets REALLY interesting is that the AI learns those numbers for every word completely on its own. You just have to give it a ton of data, and by data, we’re talking about a large corpus of human text, such as all of Wikipedia for example. </p>
 <h2>Types of Embeddings</h2>
-<div class="question">
+<p>This blog post will mostly focus on Word and Document embedding. However, the idea of embeddings applies to so much more. Embeddings, in general, are a way to convert some object, such as a word, sentence, or even an image into a vector. There are many types of embeddings and different approaches for each. This list is only a small example of the many kinds of embeddings that exist out there: </p>
+<ul>
+    <li><strong>Word Embeddings</strong><br>
+        Numerical representations of words capture semantic relationships, allowing computers to understand and process language.
+    </li>
+    <li><strong>Document/Sentence Embeddings</strong><br>
+        Document/sentence embeddings extend the concept of word embeddings to represent entire documents or sentences as single vectors. These embeddings capture the overall meaning and context of the text. These embeddings help in tasks like semantic search, document clustering, and text summarization.
+    </li>
+    <li><strong>Image Embeddings</strong><br>
+        Image embeddings are numerical representations of images, mapping them to dense vectors in a high-dimensional space. These vectors capture an image's features, such as color, texture, and shape.
+    </li>
+    <li><strong>Graph Embeddings</strong><br>
+        Graph embeddings are numerical representations of nodes in a graph, mapping them to dense vectors in a low-dimensional space. These vectors capture the structural and semantic relationships between nodes in the graph.
+    </li>
+</ul>
+    
+    
+    <div class="question">
     <p>1. Which techniques create word embeddings?</p>
     <input type="radio" name="q1" value="correct"> A) Word2Vec and GloVe<br>
     <input type="radio" name="q1" value="B"> B) Word2Vec and FastText<br>
