@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,102 +10,160 @@
             font-family: Arial, sans-serif;
             margin: 20px;
         }
+
         .question {
             margin: 20px 0;
         }
     </style>
 </head>
+
 <body>
 
-<h1>From Words to Vectors: The Journey of Word Embeddings</h1>
-<p>Have you ever wondered how AI models like Chat GPT and Gemini see words and sentences? Well, just like everything with AI, it’s all numbers! Words and sentences are converted to “vectors” before being passed to AI models. Vectors, if you’re not familiar with them, are just a list of numbers. As we shall see in this post, current AI models represent each word in human language by a unique list of numbers, but where it gets REALLY interesting is that the AI learns those numbers for every word completely on its own. You just have to give it a ton of data, and by data, we’re talking about a large corpus of human text, such as all of Wikipedia for example. </p>
-<h2>Types of Embeddings</h2>
-<p>This blog post will mostly focus on Word and Document embedding. However, the idea of embeddings applies to so much more. Embeddings, in general, are a way to convert some object, such as a word, sentence, or even an image into a vector. There are many types of embeddings and different approaches for each. This list is only a small example of the many kinds of embeddings that exist out there: </p>
-<ul>
-    <li><strong>Word Embeddings</strong><br>
-        Numerical representations of words capture semantic relationships, allowing computers to understand and process language.
-    </li>
-    <br>
-    <li><strong>Document/Sentence Embeddings</strong><br>
-        Document/sentence embeddings extend the concept of word embeddings to represent entire documents or sentences as single vectors. These embeddings capture the overall meaning and context of the text. These embeddings help in tasks like semantic search, document clustering, and text summarization.
-    </li>
-    <br>
-    <li><strong>Image Embeddings</strong><br>
-        Image embeddings are numerical representations of images, mapping them to dense vectors in a high-dimensional space. These vectors capture an image's features, such as color, texture, and shape.
-    </li>
-    <br>
-    <li><strong>Graph Embeddings</strong><br>
-        Graph embeddings are numerical representations of nodes in a graph, mapping them to dense vectors in a low-dimensional space. These vectors capture the structural and semantic relationships between nodes in the graph.
-    </li>
-</ul>
+    <h1>From Words to Vectors: The Journey of Word Embeddings</h1>
+    <p>Have you ever wondered how AI models like Chat GPT and Gemini see words and sentences? Well, just like everything
+        with AI, it’s all numbers! Words and sentences are converted to “vectors” before being passed to AI models.
+        Vectors, if you’re not familiar with them, are just a list of numbers. As we shall see in this post, current AI
+        models represent each word in human language by a unique list of numbers, but where it gets REALLY interesting
+        is that the AI learns those numbers for every word completely on its own. You just have to give it a ton of
+        data, and by data, we’re talking about a large corpus of human text, such as all of Wikipedia for example. </p>
+    <h2>Types of Embeddings</h2>
+    <p>This blog post will mostly focus on Word and Document embedding. However, the idea of embeddings applies to so
+        much more. Embeddings, in general, are a way to convert some object, such as a word, sentence, or even an image
+        into a vector. There are many types of embeddings and different approaches for each. This list is only a small
+        example of the many kinds of embeddings that exist out there: </p>
+    <ul>
+        <li><strong>Word Embeddings</strong><br>
+            Numerical representations of words capture semantic relationships, allowing computers to understand and
+            process language.
+        </li>
+        <br>
+        <li><strong>Document/Sentence Embeddings</strong><br>
+            Document/sentence embeddings extend the concept of word embeddings to represent entire documents or
+            sentences as single vectors. These embeddings capture the overall meaning and context of the text. These
+            embeddings help in tasks like semantic search, document clustering, and text summarization.
+        </li>
+        <br>
+        <li><strong>Image Embeddings</strong><br>
+            Image embeddings are numerical representations of images, mapping them to dense vectors in a
+            high-dimensional space. These vectors capture an image's features, such as color, texture, and shape.
+        </li>
+        <br>
+        <li><strong>Graph Embeddings</strong><br>
+            Graph embeddings are numerical representations of nodes in a graph, mapping them to dense vectors in a
+            low-dimensional space. These vectors capture the structural and semantic relationships between nodes in the
+            graph.
+        </li>
+    </ul>
     <h2>What are Word Embeddings?</h2>
     <p>
-        Well, word embeddings mean converting a word into a vector. To be more Mathematically precise, we’re mapping, or “embedding”,  each word to some vector in a d-dimensional vector space, where d is the dimension of the vector and is the same for all words. For example, if each word gets mapped to a list of 300 numbers, our word embeddings convert each word to a vector in a 300-dimensional vector space. But how exactly do those mappings work? Well, let’s dive deeper!
+        Well, word embeddings mean converting a word into a vector. To be more Mathematically precise, we’re mapping, or
+        “embedding”, each word to some vector in a d-dimensional vector space, where d is the dimension of the vector
+        and is the same for all words. For example, if each word gets mapped to a list of 300 numbers, our word
+        embeddings convert each word to a vector in a 300-dimensional vector space. But how exactly do those mappings
+        work? Well, let’s dive deeper!
 
     </p>
     <h3>How Word Embedding Works</h3>
     <p>
-        Word embedding begins by training a model on a large text dataset, like Wikipedia. First, the text is preprocessed to ensure the quality. This involves splitting the text into individual words, a step known as tokenization, and removing unnecessary elements such as stop words, punctuation, and special characters.
-    </p> 
+        Word embedding begins by training a model on a large text dataset, like Wikipedia. First, the text is
+        preprocessed to ensure the quality. This involves splitting the text into individual words, a step known as
+        tokenization, and removing unnecessary elements such as stop words, punctuation, and special characters.
+    </p>
     <p>
-       During training, the model learns to assign a vector to each word, placing words with similar meanings closer together in a shared vector space. By this, word embeddings capture both the unique meaning of each word and the relationships between them, reflecting how they are used. This highlights the strength of word embeddings in positioning words that share meanings or contexts near each other, making it easier to understand the relationships between concepts.
- </p>
-   <h3>
-       Approaches to word embeddings
-   </h3>
+        During training, the model learns to assign a vector to each word, placing words with similar meanings closer
+        together in a shared vector space. By this, word embeddings capture both the unique meaning of each word and the
+        relationships between them, reflecting how they are used. This highlights the strength of word embeddings in
+        positioning words that share meanings or contexts near each other, making it easier to understand the
+        relationships between concepts.
+    </p>
+    <h3>
+        Approaches to word embeddings
+    </h3>
     <h4>1. Frequency-based Approaches</h4>
-<p>These approaches depend on the occurrences and the word frequency to build vector representations, such as:</p>
-<ol>
-    <li><strong>One Hot Encoding</strong></li>
-    <li><strong>Bag of Words (BoW)</strong></li>
-    <li><strong>Co-occurrence Counts</strong></li>
-    <li><strong>Term Frequency-Inverse Document Frequency (TF-IDF)</strong></li>
-</ol>
+    <p>These approaches depend on the occurrences and the word frequency to build vector representations, such as:</p>
+    <ol>
+        <li><strong>One Hot Encoding</strong></li>
+        <li><strong>Bag of Words (BoW)</strong></li>
+        <li><strong>Co-occurrence Counts</strong></li>
+        <li><strong>Term Frequency-Inverse Document Frequency (TF-IDF)</strong></li>
+    </ol>
 
-<h4>2. Prediction-based Approaches</h4>
-<p>These approaches learn word embeddings by predicting word occurrences based on their context, such as:</p>
-<ol>
-    <li><strong>Word2Vec</strong></li>
-    <li><strong>GloVe (Global Vectors for Word Representation)</strong></li>
-    <li><strong>BERT</strong></li>
-</ol>
-    
-    
-    
-    
+    <h4>2. Prediction-based Approaches</h4>
+    <p>These approaches learn word embeddings by predicting word occurrences based on their context, such as:</p>
+    <ol>
+        <li><strong>Word2Vec</strong></li>
+        <li><strong>GloVe (Global Vectors for Word Representation)</strong></li>
+        <li><strong>BERT</strong></li>
+    </ol>
+
+    <h3>
+        One Hot Encoding
+    </h3>
+
+    <p>
+        This is the most basic technique to embed words, but as we shall see, it has many disadvantages. To understand
+        this technique more concretely, let’s assume we will choose to set the vocabulary, that is all the words our AI
+        model will ever know or ever have to deal with, to be the 50,000 most common words in the English language. One
+        idea is to sort the words by any order and assign each word a number between 1 and our vocab size, which is
+        50,000 in this case. Notice how we’ve already converted each word into a number? The next step is to represent
+        each word by a list of numbers of length 50,000 that is all 0’s with a single 1 at the number associated with
+        our target word. In the figure below, the words are sorted alphabetically, and the word Apple is assigned the
+        number 1, for example. The vector associated with Apple is equal to 1 only at the first index with all the other
+        values equal to 0 elsewhere. On the other hand, the last word in our vocab, Zoo, has a corresponding vector that
+        is only equal to 1 at the last index and equal to 0 elsewhere.
+    </p>
+
+
+    <p> But why are hot encodings a bad idea? Well, there are a couple of problems with this approach:</p>
+    <ol>
+        <li>The Vector Dimension is too large = Vocab Size.<br></li>
+        <li>The Vectors are sparse, “mostly empty”. Even though we’re using many dimensions per word, we’re
+                wasting most of
+                our vector dimensions by setting them to 0. We’re only making use of 1 single dimension per word when we
+                set it
+                equal to 1.<br></li>
+        <li> All words are equally distant in our vector space. As we shall see later on, other techniques for
+                word
+                embeddings have an interesting property in that words with similar meanings get embedded by vectors that
+                are
+                closer to each other.<br></li>
+    </ol>
+
+
     <div class="question">
-    <p>1. Which techniques create word embeddings?</p>
-    <input type="radio" name="q1" value="correct"> A) Word2Vec and GloVe<br>
-    <input type="radio" name="q1" value="B"> B) Word2Vec and FastText<br>
-    <input type="radio" name="q1" value="C"> C) TF-IDF and LDA<br>
-    <input type="radio" name="q1" value="D"> D) K-Means and PCA<br>
-</div>
+        <p>1. Which techniques create word embeddings?</p>
+        <input type="radio" name="q1" value="correct"> A) Word2Vec and GloVe<br>
+        <input type="radio" name="q1" value="B"> B) Word2Vec and FastText<br>
+        <input type="radio" name="q1" value="C"> C) TF-IDF and LDA<br>
+        <input type="radio" name="q1" value="D"> D) K-Means and PCA<br>
+    </div>
 
-<div class="question">
-    <p>2. What does cosine similarity measure?</p>
-    <input type="radio" name="q2" value="A"> A) The Euclidean distance between two points.<br>
-    <input type="radio" name="q2" value="correct"> B) The angle between two vectors.<br>
-    <input type="radio" name="q2" value="C"> C) The average of two vectors.<br>
-    <input type="radio" name="q2" value="D"> D) The length of the longest vector.<br>
-</div>
+    <div class="question">
+        <p>2. What does cosine similarity measure?</p>
+        <input type="radio" name="q2" value="A"> A) The Euclidean distance between two points.<br>
+        <input type="radio" name="q2" value="correct"> B) The angle between two vectors.<br>
+        <input type="radio" name="q2" value="C"> C) The average of two vectors.<br>
+        <input type="radio" name="q2" value="D"> D) The length of the longest vector.<br>
+    </div>
 
-<button onclick="checkAnswers()">Submit Answers</button>
+    <button onclick="checkAnswers()">Submit Answers</button>
 
-<p id="result"></p>
+    <p id="result"></p>
 
-<script>
-    function checkAnswers() {
-        let correct = 0;
-        let total = 2; // Total number of questions
+    <script>
+        function checkAnswers() {
+            let correct = 0;
+            let total = 2; // Total number of questions
 
-        // Check answers for word embeddings
-        if (document.querySelector('input[name="q1"]:checked')?.value === "correct") correct++;
-        // Check answer for cosine similarity
-        if (document.querySelector('input[name="q2"]:checked')?.value === "correct") correct++;
+            // Check answers for word embeddings
+            if (document.querySelector('input[name="q1"]:checked')?.value === "correct") correct++;
+            // Check answer for cosine similarity
+            if (document.querySelector('input[name="q2"]:checked')?.value === "correct") correct++;
 
-        document.getElementById("result").innerText = `You got ${correct} out of ${total} correct!`;
-    }
-</script>
+            document.getElementById("result").innerText = `You got ${correct} out of ${total} correct!`;
+        }
+    </script>
 
 </body>
+
 </html>
