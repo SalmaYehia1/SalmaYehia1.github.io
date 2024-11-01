@@ -348,59 +348,61 @@
     </figure>
 
 
+<h3>Knowledge Check</h3>
 
-<div class="knowledge-check">
+<!-- Knowledge Check Section with Styled Border -->
+<div class="cosine-knowledge-check">
     <!-- Question -->
-    <div class="question">
+    <div class="cosine-question">
         <p>What does cosine similarity measure?</p>
-        <input type="radio" name="q2" value="A"> A) The Euclidean distance between two points.<br>
-        <input type="radio" name="q2" value="correct"> B) The angle between two vectors.<br>
-        <input type="radio" name="q2" value="C"> C) The average of two vectors.<br>
-        <input type="radio" name="q2" value="D"> D) The length of the longest vector.<br>
+        <input type="radio" name="cosine-similarity-answer" value="A"> A) The Euclidean distance between two points.<br>
+        <input type="radio" name="cosine-similarity-answer" value="correct"> B) The angle between two vectors.<br>
+        <input type="radio" name="cosine-similarity-answer" value="C"> C) The average of two vectors.<br>
+        <input type="radio" name="cosine-similarity-answer" value="D"> D) The length of the longest vector.<br>
     </div>
 
-    <button id="submit-button" onclick="checkAnswer()">Submit Answer</button>
+    <button id="cosine-submit" onclick="checkCosineAnswer()">Submit Answer</button>
 
     <!-- Feedback and Explanation for Question -->
-    <div id="explanation-container" style="display:none; margin-top: 20px;">
-        <p id="feedback-q2"></p>
+    <div id="cosine-feedback-container" style="display:none; margin-top: 20px;">
+        <p id="cosine-feedback"></p>
     </div>
 </div>
 
 <script>
-    function checkAnswer() {
-        const correctAnswer = "correct"; 
-        const userAnswer = document.querySelector('input[name="q2"]:checked')?.value;
+    function checkCosineAnswer() {
+        const correctAnswer = "correct";
+        const userAnswer = document.querySelector('input[name="cosine-similarity-answer"]:checked')?.value;
 
         if (userAnswer === correctAnswer) {
-            const explanationText = "Cosine similarity measures the angle between two vectors. It is commonly used in text analysis and other applications where you want to assess the similarity in direction between two vectors, regardless of their magnitude.";
-            document.getElementById("feedback-q2").innerHTML = "<strong>Correct!</strong> " + explanationText;
-            document.getElementById("feedback-q2").style.color = "green";
-            document.getElementById("explanation-container").style.display = "block";
+            const explanationText = "Cosine similarity measures the angle between two vectors. It’s useful in text analysis and other applications where assessing similarity in direction, not magnitude, is important.";
+            document.getElementById("cosine-feedback").innerHTML = "<strong>Correct!</strong> " + explanationText;
+            document.getElementById("cosine-feedback").style.color = "green";
+            document.getElementById("cosine-feedback-container").style.display = "block";
         } else if (userAnswer) {
-            document.getElementById("feedback-q2").innerHTML = "<strong>Incorrect!</strong> Try again!";
-            document.getElementById("feedback-q2").style.color = "red";
-            document.getElementById("explanation-container").style.display = "block";
+            document.getElementById("cosine-feedback").innerHTML = "<strong>Incorrect!</strong> Try again!";
+            document.getElementById("cosine-feedback").style.color = "red";
+            document.getElementById("cosine-feedback-container").style.display = "block";
         } else {
-            document.getElementById("feedback-q2").innerHTML = "<strong>Please select an answer.</strong>";
-            document.getElementById("feedback-q2").style.color = "orange";
-            document.getElementById("explanation-container").style.display = "block";
+            document.getElementById("cosine-feedback").innerHTML = "<strong>Please select an answer.</strong>";
+            document.getElementById("cosine-feedback").style.color = "orange";
+            document.getElementById("cosine-feedback-container").style.display = "block";
         }
     }
 </script>
 
 <style>
-    .knowledge-check {
-        border: 2px solid #4CAF50; 
-        border-radius: 10px; 
-        padding: 20px; 
-        background-color: #f9f9f9; 
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-        margin: 20px 0; 
+    .cosine-knowledge-check {
+        border: 2px solid #4CAF50;
+        border-radius: 10px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        margin: 20px 0;
     }
 
-    #submit-button {
-        background-color: #4CAF50; 
+    #cosine-submit {
+        background-color: #4CAF50;
         border: none;
         color: white;
         padding: 10px 20px;
@@ -411,8 +413,8 @@
         transition: background-color 0.3s;
     }
 
-    #submit-button:hover {
-        background-color: #45a049; 
+    #cosine-submit:hover {
+        background-color: #45a049;
     }
 </style>
 
