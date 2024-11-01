@@ -307,6 +307,11 @@ So, let's dive into the architecture behind Skip-Gram. Firstly, Skip-Gram mainta
 You might be wondering why we use two embeddings per word. Well, here's the reasoning:
 
     </p>
+    <ol>
+        <li><strong>Firstly</strong>: In skip-gram, each word can appear as a central (target) word or as a neighboring (context) word around other targets. We want the model to learn not only how the target word itself behaves but also how it influences the words around it. Using separate embeddings for the target and context enables the model to capture these nuanced relationships better.</li>
+
+        <li><strong>Additionally</strong>: Language often has asymmetrical relationships, where the influence of one word on another is not identical when reversed (e.g., "doctor" and "hospital" have different roles when "doctor" is the target vs. "hospital"). By using separate embeddings, skip-gram can learn more refined relationships and better capture the directional context.</li>
+    </ol>
     <h3>3. Negative Sampling:</h3>
 
     <h2>
