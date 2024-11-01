@@ -348,11 +348,13 @@
     </figure>
 <h3>Knowledge Check</h3>
 
+<h3>Knowledge Check</h3>
+
 <!-- Question Section with Styled Border -->
 <div class="knowledge-check">
     <!-- Question -->
     <div class="question">
-        <p>2. What does cosine similarity measure?</p>
+        <p>What does cosine similarity measure?</p>
         <input type="radio" name="q2" value="A"> A) The Euclidean distance between two points.<br>
         <input type="radio" name="q2" value="correct"> B) The angle between two vectors.<br>
         <input type="radio" name="q2" value="C"> C) The average of two vectors.<br>
@@ -363,7 +365,7 @@
     <button class="submit-button" onclick="checkCosineAnswer()">Submit Answer</button>
 
     <!-- Feedback and Explanation for Question -->
-    <div id="explanation-container" style="display:none; margin-top: 20px;">
+    <div id="explanation-container-q2" style="display:none; margin-top: 20px;">
         <span id="feedback-q2"></span>
     </div>
 </div>
@@ -374,13 +376,13 @@
         const userAnswer = document.querySelector('input[name="q2"]:checked')?.value;
 
         document.getElementById("feedback-q2").innerText = '';
-        document.getElementById("explanation-container").style.display = "none";
+        document.getElementById("explanation-container-q2").style.display = "none";
 
         if (userAnswer === correctAnswer) {
-            const explanationText = "Cosine similarity measures the angle between two vectors, representing how similar their directions are. It’s often used to determine how similar two documents are in terms of their word usage and is especially helpful for high-dimensional spaces where calculating exact Euclidean distances may not be effective.";
+            const explanationText = "Cosine similarity measures the angle between two vectors, which represents the similarity of their directions. It’s useful for comparing text documents or high-dimensional data as it emphasizes similarity in direction, regardless of magnitude, making it suitable for measuring textual similarity.";
             document.getElementById("feedback-q2").innerHTML = "<strong>Correct!</strong> " + explanationText;
             document.getElementById("feedback-q2").style.color = "green";
-            document.getElementById("explanation-container").style.display = "block";
+            document.getElementById("explanation-container-q2").style.display = "block";
         } else {
             document.getElementById("feedback-q2").innerHTML = "<strong>Incorrect!</strong> Try again!";
             document.getElementById("feedback-q2").style.color = "red";
@@ -414,6 +416,7 @@
         background-color: #45a049; 
     }
 </style>
+
 
     <h2>
         Word2Vec
