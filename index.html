@@ -312,7 +312,7 @@ You might be wondering why we use two embeddings per word. Well, here's the reas
 
         <li><strong>Additionally</strong>: Language often has asymmetrical relationships, where the influence of one word on another is not identical when reversed (e.g., "doctor" and "hospital" have different roles when "doctor" is the target vs. "hospital"). By using separate embeddings, skip-gram can learn more refined relationships and better capture the directional context.</li>
     </ol>
-    <p><strong>Step 1 (Build our Dataset):</strong></p>
+    <p><strong><u>Step 1 (Build our Dataset):</u></strong></p>
     <p>To build our dataset from a set of English sentences, we first choose a context window length = 4 for example. Then for every sentence, for every word, treat it as a target word and treat the 4 words before and after it as context words. Add each one of those context/target pairs independently into our dataset. The result of this for a sentence, such as “This is an example sentence in our corpus” will be:</p>
     </p>
       <ul>
@@ -322,17 +322,15 @@ You might be wondering why we use two embeddings per word. Well, here's the reas
     </ul>
     <p>Where the first word in each parenthesis is the target word and the second word is the context word.</p>
 
-    <p><strong>Step 2 (Sample a Pair):</strong></p>
+    <p><strong><u>Step 2 (Sample a Pair):</u></strong></p>
     <p>Randomly choose a target/context pair from our dataset.</p>
 
-    <p><strong>Step 3 (Embed the pair):</strong></p>
+    <p><strong><u>Step 3 (Embed the pair):</u></strong></p>
     <p>Get the word embedding from our target embedding matrix for the target word, and the word from our context matrix for the context word. Notice that we have two embedding matrices in this case; one that is used when the word is a target word and another that is used when it's a context word.</p>
     <p>Notice that we initialize the embedding matrices randomly, so initially those embeddings won’t mean much. However, the word2vec algorithm, given some data, will work on making the embeddings for the words that occur together in the same sentence become more similar.</p>
 
-    <p><strong>Step 4 (Calculate the loss):</strong></p>
+    <p><strong><u>Step 4 (Calculate the loss):</u></strong></p>
     <p>Intuitively, what this next step is trying to do is “push” the target word embedding closer to the context word embedding, while “pushing” them away from all other context word embeddings. To do this, we calculate the dot product between our target word’s vector embedding and every other context word embedding. Ideally, we want the dot product between our target word and the word that came in its context to be much larger than the dot product between our target word and any other word. In this case, we use a softmax on the resultant dot products and use a cross-entropy loss on the outputs of the softmax. Mathematically, we can represent this by the next equation (where u is the target embedding, v is the context embedding, V is the vocabulary size, and y is the loss):</p>
-    <h3>3. Negative Sampling:</h3>
-
     <h2>
         GloVe (Global Vectors for Word Representation)
     </h2>
