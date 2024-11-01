@@ -431,7 +431,7 @@
 <button id="submit-button" onclick="checkSkipGramAnswer()">Submit Answer</button>
 
 <!-- Feedback and Explanation for Question 1 -->
-<div id="explanation-container" style="display:none; margin-top: 20px; border: 1px solid #ccc; padding: 10px; border-radius: 5px;">
+<div id="explanation-container" style="display:none; margin-top: 20px;">
     <span id="feedback-q4"></span>
 </div>
 
@@ -448,7 +448,7 @@
 <button id="submit-button-2" onclick="checkSkipGramParamsAnswer()">Submit Answer</button>
 
 <!-- Feedback and Explanation for Question 2 -->
-<div id="explanation-container-params" style="display:none; margin-top: 20px; border: 1px solid #ccc; padding: 10px; border-radius: 5px;">
+<div id="explanation-container-params" style="display:none; margin-top: 20px;">
     <span id="feedback-q3"></span>
 </div>
 
@@ -462,11 +462,11 @@
 
         if (userAnswer === correctAnswer) {
             const explanationText = "In the SkipGram model, the total number of parameters updated for each context/target pair is (K + 2) x d, reflecting the model's complexity in learning word associations and adapting to various contexts in the training data.";
-            document.getElementById("feedback-q4").innerHTML = "Correct! " + explanationText;
+            document.getElementById("feedback-q4").innerHTML = "<strong>Correct!</strong> " + explanationText;
             document.getElementById("feedback-q4").style.color = "green";
             document.getElementById("explanation-container").style.display = "block";
         } else {
-            document.getElementById("feedback-q4").innerText = "Incorrect. Try again!";
+            document.getElementById("feedback-q4").innerHTML = "<strong>Incorrect!</strong> Try again!";
             document.getElementById("feedback-q4").style.color = "red";
         }
     }
@@ -480,11 +480,11 @@
 
         if (userAnswer === correctAnswer) {
             const explanationText = "The SkipGram model has a total of 2 x d x |V| parameters, which includes weights for both input and output layers. This structure allows it to effectively predict context words based on a target word, thus capturing semantic relationships in the vocabulary.";
-            document.getElementById("feedback-q3").innerHTML = "Correct! " + explanationText;
+            document.getElementById("feedback-q3").innerHTML = "<strong>Correct!</strong> " + explanationText;
             document.getElementById("feedback-q3").style.color = "green";
             document.getElementById("explanation-container-params").style.display = "block";
         } else {
-            document.getElementById("feedback-q3").innerText = "Incorrect. Try again!";
+            document.getElementById("feedback-q3").innerHTML = "<strong>Incorrect!</strong> Try again!";
             document.getElementById("feedback-q3").style.color = "red";
         }
     }
