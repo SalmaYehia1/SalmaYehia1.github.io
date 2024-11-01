@@ -430,7 +430,11 @@
 
 <button id="submit-button" onclick="checkSkipGramAnswer()">Submit Answer</button>
 
-<p id="explanation" style="display:none; margin-top: 20px;"></p>
+<!-- Feedback and Explanation for Question 1 -->
+<div id="explanation-container" style="display:none; margin-top: 20px;">
+    <span id="feedback-q4"></span>
+    <span id="explanation" style="margin-left: 10px;"></span>
+</div>
 
 <!-- Second Question -->
 <div class="question">
@@ -444,7 +448,11 @@
 
 <button id="submit-button-2" onclick="checkSkipGramParamsAnswer()">Submit Answer</button>
 
-<p id="explanation-params" style="display:none; margin-top: 20px;"></p>
+<!-- Feedback and Explanation for Question 2 -->
+<div id="explanation-container-params" style="display:none; margin-top: 20px;">
+    <span id="feedback-q3"></span>
+    <span id="explanation-params" style="margin-left: 10px;"></span>
+</div>
 
 <script>
     function checkSkipGramAnswer() {
@@ -452,18 +460,18 @@
         const userAnswer = document.querySelector('input[name="q4"]:checked')?.value;
 
         document.getElementById("feedback-q4").innerText = '';
-        document.getElementById("explanation").style.display = "none";
+        document.getElementById("explanation").innerText = '';
+        document.getElementById("explanation-container").style.display = "none";
 
         if (userAnswer === correctAnswer) {
-            document.getElementById("feedback-q4").innerText = "Correct ! In SkipGram with negative sampling, (K + 2) x d parameters are updated for each context/target pair.";
+            document.getElementById("feedback-q4").innerText = "Correct!";
             document.getElementById("feedback-q4").style.color = "green";
+            document.getElementById("explanation").innerText = "Each context/target pair in SkipGram updates (K + 2) x d parameters, reflecting the model's complexity in learning word associations.";
+            document.getElementById("explanation-container").style.display = "block";
         } else {
             document.getElementById("feedback-q4").innerText = "Incorrect. Try again!";
             document.getElementById("feedback-q4").style.color = "red";
         }
-
-        document.getElementById("explanation").innerText = "Each context/target pair in SkipGram updates (K + 2) x d parameters, where K is the number of negative samples. This reflects the model's complexity in learning word associations.";
-        document.getElementById("explanation").style.display = "block";
     }
 
     function checkSkipGramParamsAnswer() {
@@ -471,18 +479,18 @@
         const userAnswer = document.querySelector('input[name="q3"]:checked')?.value;
 
         document.getElementById("feedback-q3").innerText = '';
-        document.getElementById("explanation-params").style.display = "none";
+        document.getElementById("explanation-params").innerText = '';
+        document.getElementById("explanation-container-params").style.display = "none";
 
         if (userAnswer === correctAnswer) {
-            document.getElementById("feedback-q3").innerText = "Correct ! SkipGram has 2 x d x |V| parameters.";
+            document.getElementById("feedback-q3").innerText = "Correct!";
             document.getElementById("feedback-q3").style.color = "green";
+            document.getElementById("explanation-params").innerText = "The SkipGram model has a total of 2 x d x |V| parameters, facilitating the prediction of context words given a target word.";
+            document.getElementById("explanation-container-params").style.display = "block";
         } else {
             document.getElementById("feedback-q3").innerText = "Incorrect. Try again!";
             document.getElementById("feedback-q3").style.color = "red";
         }
-
-        document.getElementById("explanation-params").innerText = "The SkipGram model has a total of 2 x d x |V| parameters, where d represents the embedding dimension and |V| denotes the vocabulary size. This accounts for the weights in both the input and output layers, facilitating the prediction of context words given a target word.";
-        document.getElementById("explanation-params").style.display = "block";
     }
 </script>
 
@@ -506,6 +514,7 @@
         background-color: #45a049; 
     }
 </style>
+
 
 
 
