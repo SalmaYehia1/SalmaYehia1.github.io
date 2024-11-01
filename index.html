@@ -97,7 +97,7 @@
     </ol>
 
 
-<!-- Question Section with Styled Border -->
+
 <div class="knowledge-check">
     <div class="question">
         <p>Which techniques create word embeddings?</p>
@@ -346,13 +346,9 @@
     <figure>
         <img src="Figures/CosineSimilarity.png" alt="Cosine Similarity" style="width: 1000px; margin-top:5px;">
     </figure>
-<h3>Knowledge Check</h3>
 
-<h3>Knowledge Check</h3>
-
-<!-- Question Section with Styled Border -->
 <div class="knowledge-check">
-    <!-- Question -->
+    
     <div class="question">
         <p>What does cosine similarity measure?</p>
         <input type="radio" name="q2" value="A"> A) The Euclidean distance between two points.<br>
@@ -362,7 +358,7 @@
         <p class="feedback" id="feedback-q2"></p>
     </div>
 
-    <button class="submit-button" onclick="checkCosineAnswer()">Submit Answer</button>
+    <button id="submit-button" onclick="checkAnswer()">Submit Answer</button>
 
     <!-- Feedback and Explanation for Question -->
     <div id="explanation-container-q2" style="display:none; margin-top: 20px;">
@@ -371,15 +367,16 @@
 </div>
 
 <script>
-    function checkCosineAnswer() {
-        const correctAnswer = "correct"; 
+    function checkAnswer() {
+        const correctAnswer = "correct"; // Correct answer for cosine similarity
         const userAnswer = document.querySelector('input[name="q2"]:checked')?.value;
 
+        // Reset feedback and hide explanation initially
         document.getElementById("feedback-q2").innerText = '';
         document.getElementById("explanation-container-q2").style.display = "none";
 
         if (userAnswer === correctAnswer) {
-            const explanationText = "Cosine similarity measures the angle between two vectors, which represents the similarity of their directions. It’s useful for comparing text documents or high-dimensional data as it emphasizes similarity in direction, regardless of magnitude, making it suitable for measuring textual similarity.";
+            const explanationText = "Cosine similarity measures the angle between two vectors. It is commonly used in text analysis and other applications where you want to assess the similarity in direction between two vectors, regardless of their magnitude.";
             document.getElementById("feedback-q2").innerHTML = "<strong>Correct!</strong> " + explanationText;
             document.getElementById("feedback-q2").style.color = "green";
             document.getElementById("explanation-container-q2").style.display = "block";
@@ -400,7 +397,7 @@
         margin: 20px 0; 
     }
 
-    .submit-button {
+    #submit-button {
         background-color: #4CAF50; 
         border: none;
         color: white;
@@ -412,7 +409,7 @@
         transition: background-color 0.3s;
     }
 
-    .submit-button:hover {
+    #submit-button:hover {
         background-color: #45a049; 
     }
 </style>
