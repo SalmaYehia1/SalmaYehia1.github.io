@@ -284,6 +284,11 @@ Here, CBOW works on figuring out the sentence's meaning and predicting the targe
 
         <li><strong>Output Layer</strong>: In this layer, the model uses a softmax function to predict the target word by figuring out which has the highest probability (most likely the middle word) from the vocabulary.</li>
     </ul>
+    <p>
+        Previously we talked about Bag Of Words (BOW) so, let's know the main differences between CBOW and BOW
+Each of the BoW and CBOW models serves distinct purposes in natural language processing. BoW represents a document as a collection of words, providing an effective representation by ignoring their order and grammar, and focusing on the frequency of each word. This results in high-dimensional and sparse feature vectors. In contrast, CBOW is a neural network model that predicts a target word based on its surrounding context words, capturing semantic relationships by considering the context in which words appear and identifying the relationships between them.
+
+    </p>
     
     
     <h3>2. Skip-Gram:</h3>
