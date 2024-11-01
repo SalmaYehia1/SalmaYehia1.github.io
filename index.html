@@ -71,40 +71,7 @@
     
     
     
-    
-    <div class="question">
-    <p>1. Which techniques create word embeddings?</p>
-    <input type="radio" name="q1" value="correct"> A) Word2Vec and GloVe<br>
-    <input type="radio" name="q1" value="B"> B) Word2Vec and FastText<br>
-    <input type="radio" name="q1" value="C"> C) TF-IDF and LDA<br>
-    <input type="radio" name="q1" value="D"> D) K-Means and PCA<br>
-</div>
 
-<div class="question">
-    <p>2. What does cosine similarity measure?</p>
-    <input type="radio" name="q2" value="A"> A) The Euclidean distance between two points.<br>
-    <input type="radio" name="q2" value="correct"> B) The angle between two vectors.<br>
-    <input type="radio" name="q2" value="C"> C) The average of two vectors.<br>
-    <input type="radio" name="q2" value="D"> D) The length of the longest vector.<br>
-</div>
-
-<button onclick="checkAnswers()">Submit Answers</button>
-
-<p id="result"></p>
-
-<script>
-    function checkAnswers() {
-        let correct = 0;
-        let total = 2; // Total number of questions
-
-        // Check answers for word embeddings
-        if (document.querySelector('input[name="q1"]:checked')?.value === "correct") correct++;
-        // Check answer for cosine similarity
-        if (document.querySelector('input[name="q2"]:checked')?.value === "correct") correct++;
-
-        document.getElementById("result").innerText = `You got ${correct} out of ${total} correct!`;
-    }
-</script>
 
 </body>
 </html>
