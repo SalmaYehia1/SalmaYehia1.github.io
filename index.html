@@ -137,6 +137,23 @@
         A very similar technique to one-hot encoding used to embed a document, instead of a single word, is known as Bag of Words. When embedding a document with a bag of words, we’re essentially getting the one-hot encoding of every word in the document and summing them all into one single vector representing the document, thus the text is defined as the frequency of words in a document while ignoring the order. The next figure shows how a bag of words would work for 3 sentences, each representing a different document, and a vocab size = 4:
     </p>
     <img src="https://miro.medium.com/v2/resize:fit:720/1*VRBO1zA0QGTvRY69pl7gAw.png" alt="Bag of Words Model">
+    <p>
+         
+It provides a more compact representation than one-hot encoding but still lacks context and semantic meaning. Each position in the vector corresponds to a word in the vocabulary, in the order they were listed.
+
+    </p>
+    <ol>
+    <li>
+        Similar to one-hot encoding, the vector dimension is still too large = Vocabulary Size.
+    </li>
+    <li>
+        Similar to one-hot encoding, the Bag of Words will still be mostly empty. While the vector in Bag of Words wouldn’t be as empty as with One-Hot-Encoded words, it will still have many unused dimensions in our vector set to 0. For a bag of words to ever have a vector that isn’t mostly empty, it needs to have a TON of words. For example, if we want more than half of our vector to not be set to 0, then we need the encoded document to have half of ALL the words in our vocabulary. For a vocab size = 50,000, we would need our document to have at least 25,000 unique words. However, this will usually not be the case for any document we’re dealing with, so we will end up with mostly empty vectors.
+    </li>
+    <li>
+        Completely ignores the order. While this disadvantage is related to the problem of embedding documents rather than embedding a single word, it is an important problem that appears whenever we try to embed a document as the sum of embeddings for the words in that document.
+    </li>
+</ol>
+
 
 </body>
 
