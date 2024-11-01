@@ -314,6 +314,9 @@
             by figuring out which has the highest probability (most likely the middle word) from the vocabulary.</li>
         <br>
     </ul>
+    <img src="Figures/CBOW.png" alt="CBOW Model" style="width: 300px; height: auto; margin-right: 20px;">
+
+
     <p>
         Previously we talked about Bag Of Words (BOW) so, let's know the main differences between CBOW and BOW
         Each of the BoW and CBOW models serves distinct purposes in natural language processing. BoW represents a
@@ -355,6 +358,7 @@
             "doctor" is the target vs. "hospital"). By using separate embeddings, skip-gram can learn more refined
             relationships and better capture the directional context.</li>
     </ol>
+    <img src="Figures/SkipGram.png" alt="SkipGram Model" style="width: 300px; height: auto;">
     <p><strong><u>Step 1 (Build our Dataset):</u></strong></p>
     <p>To build our dataset from a set of English sentences, we first choose a context window length = 4 for example.
         Then for every sentence, for every word, treat it as a target word and treat the 4 words before and after it as
