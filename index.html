@@ -96,6 +96,76 @@
         <li><strong>BERT</strong></li>
     </ol>
 
+
+
+<div class="knowledge-check">
+    <div class="question">
+        <p>Which techniques create word embeddings?</p>
+        <input type="radio" name="q2" value="A"> A) Word2Vec and GloVe<br>
+        <input type="radio" name="q2" value="B"> B) Word2Vec and FastText<br>
+        <input type="radio" name="q2" value="C"> C) TF-IDF and LDA<br>
+        <input type="radio" name="q2" value="D"> D) K-Means and PCA<br>
+        <p class="feedback" id="feedback-q2"></p>
+    </div>
+
+    <button id="submit-button" onclick="checkAnswer()">Submit Answer</button>
+
+    <!-- Feedback and Explanation for Question -->
+    <div id="explanation-container" style="display:none; margin-top: 20px;">
+        <span id="feedback-q2"></span>
+    </div>
+</div>
+
+<script>
+    function checkAnswer() {
+        const correctAnswer = "A"; // Update this if you choose another correct answer
+        const userAnswer = document.querySelector('input[name="q2"]:checked')?.value;
+
+        document.getElementById("feedback-q2").innerText = '';
+        document.getElementById("explanation-container").style.display = "none";
+
+        if (userAnswer === correctAnswer) {
+            const explanationText = "Word2Vec and GloVe are popular techniques for creating word embeddings. Word2Vec uses neural networks to create embeddings based on the context of words, while GloVe (Global Vectors for Word Representation) uses matrix factorization techniques to learn word representations. Both methods capture semantic meanings and relationships between words.";
+            document.getElementById("feedback-q2").innerHTML = "<strong>Correct!</strong> " + explanationText;
+            document.getElementById("feedback-q2").style.color = "green";
+            document.getElementById("explanation-container").style.display = "block";
+        } else {
+            document.getElementById("feedback-q2").innerHTML = "<strong>Incorrect!</strong> Try again!";
+            document.getElementById("feedback-q2").style.color = "red";
+        }
+    }
+</script>
+
+<style>
+    .knowledge-check {
+        border: 2px solid #4CAF50; /* Border color */
+        border-radius: 10px; /* Rounded corners */
+        padding: 20px; /* Inner spacing */
+        background-color: #f9f9f9; /* Background color */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+        margin: 20px 0; /* Margin around the section */
+    }
+
+    #submit-button {
+        background-color: #4CAF50; 
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    #submit-button:hover {
+        background-color: #45a049; 
+    }
+</style>
+
     <h3>
         One Hot Encoding
     </h3>
@@ -173,7 +243,7 @@
             with, so we will end up with mostly empty vectors.<br><br>
         </li>
         <li>
-            Completely ignores the order. While this disadvantage is related to the problem of embedding documents
+            Completely ignores the order. This disadvantage is related to the problem of embedding documents
             rather than embedding a single word, it is an important problem that appears whenever we try to embed a
             document as the sum of embeddings for the words in that document.<br><br>
         </li>
@@ -268,14 +338,84 @@
         between the words.
 
         In the following figure for example, ideally, we want the angle between our learned embedding vectors for Apple
-        and Orange to be smaller than the angle between Apple and Chair, thus the cosine similarity should be higher in
+        and Orange to be smaller than the angle between Apple and the Chair, thus the cosine similarity should be higher in
         the case of Apple and Orange than in Apple and Chair.
 
     </p>
 
     <figure>
-        <img src="Figures/CosineSimilarity.png" alt="Cosine Similarity" style="width: 1000px; margin-top:20px;">
+        <img src="Figures/CosineSimilarity.png" alt="Cosine Similarity" style="width: 1000px; margin-top:5px;">
     </figure>
+
+<div class="cosine-knowledge-check">
+    <!-- Question -->
+    <div class="cosine-question">
+        <p>What does cosine similarity measure?</p>
+        <input type="radio" name="cosine-similarity-answer" value="A"> A) The Euclidean distance between two points.<br>
+        <input type="radio" name="cosine-similarity-answer" value="B"> B) The angle between two vectors.<br>
+        <input type="radio" name="cosine-similarity-answer" value="C"> C) The average of two vectors.<br>
+        <input type="radio" name="cosine-similarity-answer" value="D"> D) The length of the longest vector.<br>
+        <p class="feedback" id="feedback-cosine"></p>
+    </div>
+
+    <!-- Feedback and Explanation for Question -->
+    <div id="cosine-explanation-container" style="display:none; margin-top: 20px;">
+        <span id="feedback-cosine"></span>
+    </div>
+
+    <button id="cosine-submit-button" onclick="checkCosineAnswer()">Submit Answer</button>
+</div>
+
+<script>
+    function checkCosineAnswer() {
+        const correctAnswer = "B"; // Correct answer is B
+        const userAnswer = document.querySelector('input[name="cosine-similarity-answer"]:checked')?.value;
+
+        // Reset feedback text and hide explanation initially
+        document.getElementById("feedback-cosine").innerText = '';
+        document.getElementById("cosine-explanation-container").style.display = "none";
+
+        if (userAnswer === correctAnswer) {
+            const explanationText = "Cosine similarity measures the angle between two vectors. It’s commonly used to evaluate similarity based on direction rather than magnitude, especially in text analysis and recommendation systems.";
+            document.getElementById("feedback-cosine").innerHTML = "<strong>Correct!</strong> " + explanationText;
+            document.getElementById("feedback-cosine").style.color = "green";
+            document.getElementById("cosine-explanation-container").style.display = "block";
+        } else if (userAnswer) {
+            document.getElementById("feedback-cosine").innerHTML = "<strong>Incorrect!</strong> Try again!";
+            document.getElementById("feedback-cosine").style.color = "red";
+        } else {
+            document.getElementById("feedback-cosine").innerHTML = "<strong>Please select an answer.</strong>";
+            document.getElementById("feedback-cosine").style.color = "orange";
+        }
+    }
+</script>
+
+<style>
+    .cosine-knowledge-check {
+        border: 2px solid #4CAF50; /* Border color */
+        border-radius: 10px; /* Rounded corners */
+        padding: 20px; /* Inner spacing */
+        background-color: #f9f9f9; /* Background color */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+        margin: 20px 0; /* Margin around the section */
+    }
+
+    #cosine-submit-button {
+        background-color: #4CAF50; 
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    #cosine-submit-button:hover {
+        background-color: #45a049; 
+    }
+</style>
 
     <h2>
         Word2Vec
@@ -314,6 +454,9 @@
             by figuring out which has the highest probability (most likely the middle word) from the vocabulary.</li>
         <br>
     </ul>
+   <img src="Figures/CBOW.png" alt="SkipGram Model" style="width: 400px; height: auto; margin-top: 5px;">
+
+
     <p>
         Previously we talked about Bag Of Words (BOW) so, let's know the main differences between CBOW and BOW
         Each of the BoW and CBOW models serves distinct purposes in natural language processing. BoW represents a
@@ -324,6 +467,7 @@
         relationships between them.
 
     </p>
+    
 
 
     <h3>2. Skip-Gram:</h3>
@@ -355,6 +499,8 @@
             "doctor" is the target vs. "hospital"). By using separate embeddings, skip-gram can learn more refined
             relationships and better capture the directional context.</li>
     </ol>
+    <img src="Figures/SkipGram.png" alt="SkipGram Model" style="width: 400px; height: auto; margin-top: 5px;">
+
     <p><strong><u>Step 1 (Build our Dataset):</u></strong></p>
     <p>To build our dataset from a set of English sentences, we first choose a context window length = 4 for example.
         Then for every sentence, for every word, treat it as a target word and treat the 4 words before and after it as
@@ -430,6 +576,117 @@
         vocabulary at every step.
 
     </p>
+
+
+<!-- First Question -->
+<div class="knowledge-check">
+    <div class="question">
+        <p>1. In SkipGram with negative sampling, how many parameters are updated for every context/target pair (t,c) where K = Number of negative samples?</p>
+        <input type="radio" name="q4" value="A"> A) K x d<br>
+        <input type="radio" name="q4" value="B"> B) 2 x K x d<br>
+        <input type="radio" name="q4" value="C"> C) (K+1) x d<br>
+        <input type="radio" name="q4" value="correct"> D) (K+2) x d<br>
+        <p class="feedback" id="feedback-q4"></p>
+    </div>
+
+    <button id="submit-button" onclick="checkSkipGramAnswer()">Submit Answer</button>
+
+    <!-- Feedback and Explanation for Question 1 -->
+    <div id="explanation-container" style="display:none; margin-top: 20px;">
+        <span id="feedback-q4"></span>
+    </div>
+</div>
+
+<!-- Second Question -->
+<div class="knowledge-check">
+    <div class="question">
+        <p>2. How many parameters does SkipGram have? (d = embedding dimension, |V| = vocab size, m = context window)</p>
+        <input type="radio" name="q3" value="A"> A) d x |V|<br>
+        <input type="radio" name="q3" value="correct"> B) 2 x d x |V|<br>
+        <input type="radio" name="q3" value="C"> C) 2 x m x |V|<br>
+        <input type="radio" name="q3" value="D"> D) 2 x m x d x |V|.<br>
+        <p class="feedback" id="feedback-q3"></p>
+    </div>
+
+    <button id="submit-button-2" onclick="checkSkipGramParamsAnswer()">Submit Answer</button>
+
+    <!-- Feedback and Explanation for Question 2 -->
+    <div id="explanation-container-params" style="display:none; margin-top: 20px;">
+        <span id="feedback-q3"></span>
+    </div>
+</div>
+
+<script>
+    function checkSkipGramAnswer() {
+        const correctAnswer = "correct"; 
+        const userAnswer = document.querySelector('input[name="q4"]:checked')?.value;
+
+        document.getElementById("feedback-q4").innerText = '';
+        document.getElementById("explanation-container").style.display = "none";
+
+        if (userAnswer === correctAnswer) {
+            const explanationText = "In the SkipGram model, the total number of parameters updated for each context/target pair is (K + 2) x d, reflecting the model's complexity in learning word associations and adapting to various contexts in the training data.";
+            document.getElementById("feedback-q4").innerHTML = "<strong>Correct!</strong> " + explanationText;
+            document.getElementById("feedback-q4").style.color = "green";
+            document.getElementById("explanation-container").style.display = "block";
+        } else {
+            document.getElementById("feedback-q4").innerHTML = "<strong>Incorrect!</strong> Try again!";
+            document.getElementById("feedback-q4").style.color = "red";
+        }
+    }
+
+    function checkSkipGramParamsAnswer() {
+        const correctAnswer = "correct"; 
+        const userAnswer = document.querySelector('input[name="q3"]:checked')?.value;
+
+        document.getElementById("feedback-q3").innerText = '';
+        document.getElementById("explanation-container-params").style.display = "none";
+
+        if (userAnswer === correctAnswer) {
+            const explanationText = "The SkipGram model has a total of 2 x d x |V| parameters, which includes weights for both input and output layers. This structure allows it to effectively predict context words based on a target word, thus capturing semantic relationships in the vocabulary.";
+            document.getElementById("feedback-q3").innerHTML = "<strong>Correct!</strong> " + explanationText;
+            document.getElementById("feedback-q3").style.color = "green";
+            document.getElementById("explanation-container-params").style.display = "block";
+        } else {
+            document.getElementById("feedback-q3").innerHTML = "<strong>Incorrect!</strong> Try again!";
+            document.getElementById("feedback-q3").style.color = "red";
+        }
+    }
+</script>
+
+<style>
+    .knowledge-check {
+        border: 2px solid #4CAF50; /* Border color */
+        border-radius: 10px; /* Rounded corners */
+        padding: 20px; /* Inner spacing */
+        background-color: #f9f9f9; /* Background color */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+        margin: 20px 0; /* Margin around the section */
+    }
+
+    #submit-button, #submit-button-2 {
+        background-color: #4CAF50; 
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    #submit-button:hover, #submit-button-2:hover {
+        background-color: #45a049; 
+    }
+</style>
+
+
+
+
     <h2>
         GloVe (Global Vectors for Word Representation)
     </h2>
@@ -461,6 +718,75 @@
 
     </p>
 
+
+<!-- Question Section with Styled Border -->
+<div class="knowledge-check">
+    <!-- Question -->
+    <div class="question">
+        <p>How does GloVe differ from Word2Vec in its approach to word embeddings?</p>
+        <input type="radio" name="q1" value="A"> A) It uses only local context to learn word relationships.<br>
+        <input type="radio" name="q1" value="correct"> B) It relies on overall co-occurrence patterns across the entire corpus.<br>
+        <input type="radio" name="q1" value="C"> C) It constructs word vectors randomly.<br>
+        <input type="radio" name="q1" value="D"> D) It does not require a text corpus.<br>
+        <p class="feedback" id="feedback-q1"></p>
+    </div>
+
+    <button class="submit-button" onclick="checkGloVeAnswer()">Submit Answer</button>
+
+    <!-- Feedback and Explanation for Question -->
+    <div id="explanation-container" style="display:none; margin-top: 20px;">
+        <span id="feedback-q1"></span>
+    </div>
+</div>
+
+<script>
+    function checkGloVeAnswer() {
+        const correctAnswer = "correct"; 
+        const userAnswer = document.querySelector('input[name="q1"]:checked')?.value;
+
+        document.getElementById("feedback-q1").innerText = '';
+        document.getElementById("explanation-container").style.display = "none";
+
+        if (userAnswer === correctAnswer) {
+            const explanationText = "GloVe captures the overall co-occurrence patterns of words in a corpus, allowing it to learn relationships based on how often words appear together across the entire text, unlike Word2Vec, which focuses more on local contexts.";
+            document.getElementById("feedback-q1").innerHTML = "<strong>Correct!</strong> " + explanationText;
+            document.getElementById("feedback-q1").style.color = "green";
+            document.getElementById("explanation-container").style.display = "block";
+        } else {
+            document.getElementById("feedback-q1").innerHTML = "<strong>Incorrect!</strong> Try again!";
+            document.getElementById("feedback-q1").style.color = "red";
+        }
+    }
+</script>
+
+<style>
+    .knowledge-check {
+        border: 2px solid #4CAF50; 
+        border-radius: 10px; 
+        padding: 20px; 
+        background-color: #f9f9f9; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+        margin: 20px 0; 
+    }
+
+    .submit-button {
+        background-color: #4CAF50; 
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    .submit-button:hover {
+        background-color: #45a049; 
+    }
+</style>
+
+
     <h2>
         BERT (Bidirectional Encoder Representations from Transformers)
     </h2>
@@ -491,7 +817,7 @@
     </p>
 
     <figure>
-        <img src="Figures/BERT.png" alt="BERT" style="width: 1000px; margin-top:20px;">
+        <img src="Figures/BERT.png" alt="BERT" style="width: 600px; margin-top:10px;">
     </figure>
 
 
@@ -537,64 +863,7 @@
 
     <br>
 
-    <h1>Quiz Time !</h1>
-    <div class="question">
-        <p>1. Which techniques create word embeddings?</p>
-        <input type="radio" name="q1" value="correct"> A) Word2Vec and GloVe<br>
-        <input type="radio" name="q1" value="B"> B) Word2Vec and FastText<br>
-        <input type="radio" name="q1" value="C"> C) TF-IDF and LDA<br>
-        <input type="radio" name="q1" value="D"> D) K-Means and PCA<br>
-    </div>
-
-    <div class="question">
-        <p>2. What does cosine similarity measure?</p>
-        <input type="radio" name="q2" value="A"> A) The Euclidean distance between two points.<br>
-        <input type="radio" name="q2" value="correct"> B) The angle between two vectors.<br>
-        <input type="radio" name="q2" value="C"> C) The average of two vectors.<br>
-        <input type="radio" name="q2" value="D"> D) The length of the longest vector.<br>
-    </div>
-
-
-
-    <div class="question">
-        <p>3. How many parameters does SkipGram have? (d = embedding dimension, |V| = vocab size, m = context window)
-        </p>
-        <input type="radio" name="q3" value="A"> A) d x |V|<br>
-        <input type="radio" name="q3" value="correct"> B) 2 x d x |V|<br>
-        <input type="radio" name="q3" value="C"> C) 2 x m x |V|<br>
-        <input type="radio" name="q3" value="D"> D) 2 x m x d x |V|.<br>
-    </div>
-
-
-    <div class="question">
-        <p>4. In SkipGram with negative sampling, how many parameters are updated for every context/target pair (t,c)
-            where K = Number of negative samples</p>
-        <input type="radio" name="q4" value="A"> A) K x d<br>
-        <input type="radio" name="q4" value="B"> B) 2 x K x d<br>
-        <input type="radio" name="q4" value="C"> C) (K+1) x d<br>
-        <input type="radio" name="q4" value="correct"> D) (K+2) x d<br>
-    </div>
-
-    <button onclick="checkAnswers()">Submit Answers</button>
-
-    <p id="result"></p>
-
-    <script>
-        function checkAnswers() {
-            let correct = 0;
-            let total = 4; // Total number of questions
-
-            // Check answers for word embeddings
-            if (document.querySelector('input[name="q1"]:checked')?.value === "correct") correct++;
-            // Check answer for cosine similarity
-            if (document.querySelector('input[name="q2"]:checked')?.value === "correct") correct++;
-            // Check answer for SkipGram Parameter Count
-            if (document.querySelector('input[name="q3"]:checked')?.value === "correct") correct++;
-            // Check answer for number of parameters updated
-            if (document.querySelector('input[name="q4"]:checked')?.value === "correct") correct++;
-
-            document.getElementById("result").innerText = `You got ${correct} out of ${total} correct!`;
-        }
+    
     </script>
 </body>
 
